@@ -1,0 +1,9 @@
+[user]
+	email = 3674588+JuanoD@users.noreply.github.com
+	name = Juan Díaz
+[core]
+	editor = code --wait
+[diff]
+    tool = default-difftool
+[difftool "default-difftool"]
+    cmd = code --wait --diff $LOCAL $REMOTE
