@@ -1,0 +1,49 @@
+add_newline = false
+format = """
+[$line_break┌──────────(\\[ $git_branch$git_commit$git_state$git_metrics$git_status \\])-─────────(\\[$jobs\\])(\\[$cmd_duration\\])→](bold green)
+[│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time$status$shell
+[└─$character](bold green) """
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"
+
+[cmd_duration]
+format = "[ೱ$duration]($style)"
+disabled = false
+
+[directory]
+truncation_symbol = "…/"
+truncation_length = 8
+
+[git_branch]
+format = "[$symbol$branch]($style)"
+symbol = "⸙"
+
+[git_status]
+format = '([( $ahead_behind)( $staged)( $renamed)( $modified)( $deleted)( $conflicted)( $untracked)( $stashed)]($style))'
+conflicted = "[!$count](red)"
+ahead = "[⇡$count](green)"
+behind = "[⇣$count](red)"
+diverged = "[$ahead_count](green)↕[behind_count](red)"
+untracked = "[?$count](purple)"
+stashed = "📦"
+modified = "[~$count](yellow)"
+staged = '[+$count](green)'
+renamed = "[»$count](cyan)"
+deleted = "[-$count](red)"
+
+[hostname]
+disabled = true
+
+[line_break]
+disabled = true
+
+[shell]
+fish_indicator = "🦈"
+bash_indicator = "🌞"
+powershell_indicator = "[❯_](green)"
+disabled = true
+
+[time]
+disabled = true

@@ -10,6 +10,8 @@ To install [chocolatey](https://docs.chocolatey.org/en-us/choco/setup) run
 
 Then run `choco install Packages.config` which can be generated with ChocolateyGUI, that can be installed with `choco install chocolateygui`
 
+To personalize the terminal, run `mkdir .config` and `New-Item -ItemType SymbolicLink -Path "~/.config/starship.toml" -Target "../.dotfiles/starship.toml"`
+
 Some changes I make to environment variables
 
 | Variable                        |                                 Change |
