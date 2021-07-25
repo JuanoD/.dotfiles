@@ -12,6 +12,8 @@ Then run `choco install Packages.config` which can be generated with ChocolateyG
 
 To personalize the terminal, run `mkdir .config` and `New-Item -ItemType SymbolicLink -Path "~/.config/starship.toml" -Target "../.dotfiles/starship.toml"`
 
+In order to add [ssh](https://docs.github.com/es/github/authenticating-to-github/connecting-to-github-with-ssh/about-ssh) support, OpenSSH service must be enabled in `services.msc`. On windows, [some config](https://gist.github.com/danieldogeanu/16c61e9b80345c5837b9e5045a701c99) must be changed in order to enable the ssh auth `git config --system core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe`
+
 Some changes I make to environment variables
 
 | Variable                        |                                 Change |
