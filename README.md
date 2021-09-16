@@ -14,16 +14,19 @@ To personalize the terminal, run `mkdir .config` and `New-Item -ItemType Symboli
 
 In order to add [ssh](https://docs.github.com/es/github/authenticating-to-github/connecting-to-github-with-ssh/about-ssh) support, OpenSSH service must be enabled in `services.msc`. On windows, [some config](https://gist.github.com/danieldogeanu/16c61e9b80345c5837b9e5045a701c99) must be changed in order to enable the ssh auth `git config --system core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe`. Also, check [this](https://dev.to/rafaelcpalmeida/managing-multiple-git-configurations-1gdh) for multiple git configurations.
 
+After updating MSYS2, some changes are needed. First, create a Hard Link from MSYS2 home directory to Windows home directory `New-Item -ItemType SymbolicLink -Path "D:/msys64/home/JuanoD" -Target "C:/Users/JuanoD"` and `New-Item -ItemType SymbolicLink -Path 'D:\msys64\scripts' -Target "${pwd}/scripts"`.
+Make sure to check [git-for-windows inside MSYS2](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
+
 Some changes I make to environment variables
 
 | Variable                        |                                 Change |
 | ------------------------------- | -------------------------------------: |
-| MSYS2_ROOT                       |                             D:\\msys64 |
+| MSYS2_ROOT                      |                             D:\\msys64 |
 | Path                            |                                    `+` |
 |                                 |               D:\\Programs\VSCode\\bin |
 |                                 |               D:\\msys64\\mingw64\\bin |
 |                                 |                   D:\\msys64\\usr\\bin |
-|                                 |             D:\\ProgramData\\launchers |
+|                                 |             D:\\msys64\\scripts |
 |                                 |     C:\\Program Files\\PowerShell\\7\\ |
 | PLATFORMIO_CORE_DIR             |           D:\\ProgramData\\.platformio |
 | PLATFORMIO_SETTING_PROJECTS_DIR | D:\Juano\Documents\Projects\PlatformIO |

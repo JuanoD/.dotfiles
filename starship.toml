@@ -1,12 +1,21 @@
+# To get it working on docker:
+# ----------------------------------------------------
+# sh -c "$(curl -fsSL https://starship.rs/install.sh)"; echo '''eval "$(starship init bash)"''' >> ~/.bashrc; mkdir ~/.config; code ~/.config/starship.toml
+# ----------------------------------------------------
+
 add_newline = false
-format = """
-[$line_break┌──────────(\\[ $git_branch$git_commit$git_state$git_metrics$git_status \\])-─────────(\\[$jobs\\])(\\[$cmd_duration\\])→](bold green)
-[│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time$status$shell
-[└─$character](bold green) """
+format = '''
+[$line_break┌(\[[$shell]($style)\])──────────(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])-─────────(\[$jobs\])(\[$cmd_duration\])→](bold green)
+[│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time$status
+[└─$character](bold green) '''
 
 [character]
 success_symbol = "[❯](bold green)"
 error_symbol = "[❯](bold red)"
+
+[cmake]
+symbol = "△"
+format= "[$symbol($version)]($style)"
 
 [cmd_duration]
 format = "[ೱ$duration]($style)"
@@ -34,16 +43,22 @@ renamed = "[»$count](cyan)"
 deleted = "[-$count](red)"
 
 [hostname]
-disabled = true
+format = "[($hostname)]($style)"
+disabled = false
 
 [line_break]
 disabled = true
 
+[nodejs]
+symbol = "ਹ"
+format = "[($symbol$version)]($style)"
+
 [shell]
+format = "[$indicator]($style)"
 fish_indicator = "🦈"
 bash_indicator = "🌞"
 powershell_indicator = "[❯_](green)"
-disabled = true
+disabled = false
 
 [time]
 disabled = true

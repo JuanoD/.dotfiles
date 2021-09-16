@@ -3,7 +3,13 @@
 	name = Juan Díaz
 [core]
 	editor = code --wait
+	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+	autocrlf = input
 [diff]
     tool = default-difftool
 [difftool "default-difftool"]
     cmd = code --wait --diff $LOCAL $REMOTE
+[merge]
+	tool = default-mergetool
+[mergetool "default-mergetool"]
+	cmd = code --wait $MERGED
