@@ -13,3 +13,7 @@
 	tool = default-mergetool
 [mergetool "default-mergetool"]
 	cmd = code --wait $MERGED
+[includeIf "gitdir:?:/**"]
+	path = ~/.gitconfig-windows
+[includeIf "gitdir:**/Quick/"]
+	path = D:/Quick/.gitconfig-quick
