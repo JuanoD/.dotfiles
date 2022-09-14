@@ -25,6 +25,8 @@ In order to add [ssh](https://docs.github.com/es/github/authenticating-to-github
 After updating MSYS2, some changes are needed. First, create a Hard Link from MSYS2 home directory to Windows home directory `New-Item -ItemType SymbolicLink -Path "D:/msys64/home/JuanoD" -Target "C:/Users/JuanoD"` and `New-Item -ItemType SymbolicLink -Path 'D:\msys64\scripts' -Target "${pwd}/scripts"`.
 Make sure to check [git-for-windows inside MSYS2](https://github.com/git-for-windows/git/wiki/Install-inside-MSYS2-proper).
 
+Set var `LC_ALL=C.UTF-8` to render all characters correctly. Read [this](https://stackoverflow.com/questions/41139067/git-log-output-encoding-issues-on-windows-10-cli-terminal) for info.
+
 Some changes I make to environment variables
 
 | Variable                        |                                 Change |
