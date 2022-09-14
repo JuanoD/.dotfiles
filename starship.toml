@@ -5,7 +5,7 @@
 
 add_newline = false
 format = '''
-[$line_break┌(\[[$shell]($style)\])──────────(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])-─────────(\[$jobs\])(\[$cmd_duration\])→](bold green)
+[$line_break┌(\[[$shell]($style)\])$fill(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])$fill(\[$jobs\])(\[$cmd_duration\])→](bold green)
 [│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time$status
 [└─$character](bold green) '''
 
@@ -15,7 +15,7 @@ error_symbol = "[❯](bold red)"
 
 [cmake]
 symbol = "△"
-format= "[$symbol($version)]($style)"
+format = "[$symbol($version)]($style)"
 
 [cmd_duration]
 format = "[ೱ$duration]($style)"
@@ -25,16 +25,20 @@ disabled = false
 truncation_symbol = "…/"
 truncation_length = 8
 
+[fill]
+symbol = "─"
+style = "bold green"
+
 [git_branch]
-format = "[$symbol$branch]($style)"
-symbol = "⸙"
+format = "[$symbol $branch]($style)"
+symbol = ""
 
 [git_status]
 format = '([( $ahead_behind)( $staged)( $renamed)( $modified)( $deleted)( $conflicted)( $untracked)( $stashed)]($style))'
 conflicted = "[!$count](red)"
 ahead = "[⇡$count](green)"
 behind = "[⇣$count](red)"
-diverged = "[$ahead_count](green)↕[behind_count](red)"
+diverged = "[$ahead_count](green)↕[$behind_count](red)"
 untracked = "[?$count](purple)"
 stashed = "📦"
 modified = "[~$count](yellow)"
@@ -52,6 +56,18 @@ disabled = true
 [nodejs]
 symbol = "ਹ"
 format = "[($symbol$version)]($style)"
+
+[package]
+symbol = "📦"
+format = "[$symbol$version]($style)"
+
+[php]
+symbol = "🐘"
+format = "[$symbol$version]($style)"
+
+[python]
+symbol = "🐍"
+format = "[${symbol}${pyenv_prefix}(${version})(-\\($virtualenv\\))]($style)"
 
 [shell]
 format = "[$indicator]($style)"
