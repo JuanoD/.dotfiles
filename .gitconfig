@@ -19,4 +19,6 @@
 	path = D:/Quick/.gitconfig-quick
 [alias]
 	slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
-	reset-origin = reset --hard @{u}
+	osreset = reset @{u}
+	oreset = reset --hard @{u}
+	orebase = rebase "@{u}"
