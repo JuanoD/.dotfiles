@@ -1,3 +1,5 @@
+Install [posh-cli](https://github.com/bergmeister/posh-cli) and [starship](https://starship.rs/). Make sure starship command is the last one.
+
 To create [Symbolic Links](https://winaero.com/create-symbolic-link-windows-10-powershell/) for important files, run this on an elevated powershell prompt:
 
 ```
