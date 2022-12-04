@@ -20,5 +20,6 @@
 [alias]
 	slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
 	osreset = reset @{u}
-	oreset = reset --hard @{u}
+	oreset = !git fetch -p && git reset --hard @{u}
 	orebase = rebase "@{u}"
+	smerge = !git fetch -p && git merge $1 && git reset @{u} && :
