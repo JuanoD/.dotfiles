@@ -42,3 +42,5 @@ Some changes I make to environment variables
 |                                 |     C:\\Program Files\\PowerShell\\7\\ |
 | PLATFORMIO_CORE_DIR             |           D:\\ProgramData\\.platformio |
 | PLATFORMIO_SETTING_PROJECTS_DIR | D:\Juano\Documents\Projects\PlatformIO |
+
+I install `pyenv` using chocolatey. After this, install `pipx`, and using pipx, install `poetry` and `git-sim`.
