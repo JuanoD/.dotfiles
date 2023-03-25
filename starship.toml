@@ -40,7 +40,7 @@ ahead = "[⇡$count](green)"
 behind = "[⇣$count](red)"
 diverged = "[$ahead_count](green)↕[$behind_count](red)"
 untracked = "[?$count](purple)"
-stashed = "📦"
+stashed = ""
 modified = "[~$count](yellow)"
 staged = '[+$count](green)'
 renamed = "[»$count](cyan)"
@@ -54,25 +54,29 @@ disabled = false
 disabled = true
 
 [nodejs]
-symbol = "ਹ"
+symbol = ""
 format = "[($symbol$version)]($style)"
 
 [package]
-symbol = "📦"
+symbol = ""
 format = "[$symbol$version]($style)"
 
 [php]
-symbol = "🐘"
+symbol = ""
 format = "[$symbol$version]($style)"
 
 [python]
-symbol = "🐍"
+symbol = ""
 format = "[${symbol}${pyenv_prefix}(${version})(-\\($virtualenv\\))]($style)"
+
+[rust]
+symbol = ""
+format = "[$symbol($version )]($style)"
 
 [shell]
 format = "[$indicator]($style)"
-fish_indicator = "🦈"
-bash_indicator = "🌞"
+fish_indicator = ""
+bash_indicator = ""
 powershell_indicator = "[❯_](green)"
 disabled = false
 
