@@ -77,8 +77,9 @@ format = "[$symbol($version )]($style)"
 format = "[$indicator]($style)"
 fish_indicator = ""
 bash_indicator = ""
-powershell_indicator = "[❯_](green)"
+powershell_indicator = "[](green)"
 nu_indicator = "Nu"
+zsh_indicator = ""
 disabled = false
 
 [status]
