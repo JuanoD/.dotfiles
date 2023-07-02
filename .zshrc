@@ -29,9 +29,10 @@ ZSH_TMUX_AUTOQUIT=false
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
-  ssh-agent
+  # ssh-agent
   tmux
 )
+eval `keychain --eval id_rsa quick_rsa`
 source $ZSH/oh-my-zsh.sh
 # export TERM=screen-256color
 
@@ -50,6 +51,8 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
 
+export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
+
 # ==================================
 # Evals
 # ==================================
@@ -65,6 +68,8 @@ eval "$(starship init zsh)"
 # ==================================
 alias lzd=lazydocker
 alias vim=nvim
+alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
+alias explorer=/mnt/c/Windows/explorer.exe
 
 # ==================================
 # Functions
