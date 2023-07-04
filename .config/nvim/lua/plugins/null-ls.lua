@@ -1,8 +1,9 @@
-return {
+--- @type LazySpec
+local M = {
   {
     "jose-elias-alvarez/null-ls.nvim",
     dependencies = {
-      "jay-babu/mason-null-ls.nvim",
+      -- "jay-babu/mason-null-ls.nvim",
     },
     -- opts = function()
     --   local null_ls = require("null-ls")
@@ -45,6 +46,7 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
       -- "davidmh/cspell.nvim",
     },
     opts = {
@@ -84,11 +86,13 @@ return {
         "taplo",
       },
       handlers = {
-        function (source_name, methods)
+        function(source_name, methods)
           -- null_ls.register(null_ls.builtins.***)
-          require('mason-null-ls') .default_setup(source_name, methods)
-        end
+          require("mason-null-ls").default_setup(source_name, methods)
+        end,
       },
     },
   },
 }
+
+return M

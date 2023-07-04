@@ -1,4 +1,5 @@
-return {
+--- @type LazySpec
+local M = {
   "linux-cultist/venv-selector.nvim",
   dependencies = {
     "neovim/nvim-lspconfig",
@@ -30,3 +31,5 @@ return {
     { "<leader>vc", "<CMD>:VenvSelectCached<CR>" },
   },
 }
+
+return M

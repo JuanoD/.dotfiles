@@ -1,4 +1,5 @@
-return {
+--- @type LazySpec
+local M = {
   {
     "miversen33/netman.nvim",
     dependencies = { "nvim-neo-tree/neo-tree.nvim" },
@@ -13,9 +14,11 @@ return {
         sources = {
           { source = "filesystem", display_name = " 󰉓 Files " },
           { source = "git_status", display_name = " 󰊢 Git " },
-          { source = "remote" }
-        }
+          { source = "remote" },
+        },
       },
     },
   },
 }
+
+return M

@@ -1,4 +1,5 @@
-return {
+--- @type LazySpec
+local M = {
   "utilyre/barbecue.nvim",
   name = "barbecue",
   version = "*",
@@ -10,3 +11,5 @@ return {
     -- configurations go here
   },
 }
+
+return M

@@ -30,9 +30,13 @@ local on_attach = function(client, bufnr)
   })
 end
 
-return {
+--- @type LazySpec
+local M = {
   {
     "williamboman/mason-lspconfig.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+    },
     opts = {
       automatic_installation = true,
       ensure_installed = {
@@ -73,6 +77,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
+      "williamboman/mason-lspconfig.nvim",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
       -- "jose-elias-alvarez/null-ls.nvim",
@@ -82,3 +87,5 @@ return {
     -- end,
   },
 }
+
+return M

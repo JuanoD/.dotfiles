@@ -1,12 +1,17 @@
-return {
+--- @type LazySpec
+local M = {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      "jay-babu/mason-nvim-dap.nvim",
+      -- "jay-babu/mason-nvim-dap.nvim",
     },
   },
   {
     "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "jay-babu/mason-nvim-dap.nvim",
+    },
     opts = {
       ensure_installed = {
         -- https://github.com/jay-babu/mason-nvim-dap.nvim/blob/main/lua/mason-nvim-dap/mappings/source.lua
@@ -34,4 +39,7 @@ return {
       },
     },
   },
+  { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
 }
+
+return M
