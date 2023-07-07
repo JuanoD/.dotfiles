@@ -2,8 +2,6 @@
 	email = 3674588+JuanoD@users.noreply.github.com
 	name = Juan Díaz
 [core]
-	editor = code --wait
-	sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 	autocrlf = input
 [diff]
     tool = default-difftool
@@ -12,11 +10,11 @@
 [merge]
 	tool = default-mergetool
 [mergetool "default-mergetool"]
-	cmd = code --wait $MERGED
-[includeIf "gitdir:?:/**"]
-	path = ~/.gitconfig-windows
-[includeIf "gitdir:**/Quick/"]
-	path = D:/Quick/.gitconfig-quick
+  cmd = code --wait $MERGED
+[include]
+  path = ~/.gitconfig-os
+[includeIf "gitdir:**/quick/"]
+	path = ~/.gitconfig-quick
 [alias]
 	slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
 	osreset = reset @{u}
