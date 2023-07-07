@@ -22,6 +22,24 @@ local M = {
       telescope.load_extension("fzf")
     end,
   },
+  -- {
+  --   "Equilibris/nx.nvim",
+  --   dependencies = { "nvim-telescope/telescope.nvim" },
+  --   opts = function(_, opts)
+  --     return {
+  --       nx_cmd_root = "pnpm nx",
+  --       command_runner = require("nx.command-runners").terminal_cmd(),
+  --       form_renderer = require("nx.form-renderers").telescope(),
+  --       read_init = true,
+  --     }
+  --   end,
+  --   config = function(_, opts)
+  --     require("nx").setup(opts)
+  --   end,
+  -- },
+  -- {
+  --   "tpope/vim-fugitive",
+  -- },
 }
 
 return M

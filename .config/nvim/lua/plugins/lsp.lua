@@ -50,7 +50,8 @@ local M = {
         -- Front
         "tsserver",
         "tailwindcss",
-        "remark_ls",
+        -- "remark_ls",
+        "marksman",
         "jsonls",
         "html",
         "emmet_ls",

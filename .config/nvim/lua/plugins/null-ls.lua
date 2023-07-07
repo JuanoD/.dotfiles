@@ -80,6 +80,7 @@ local M = {
         "isort",
         "nginx_beautifier",
         "protolint",
+        "prettier",
         -- "remark",
         "rustfmt",
         "shfmt",
