@@ -18,7 +18,10 @@ local on_attach = function(client, bufnr)
   map("n", "<leader>df", vim.diagnostic.open_float, bufopts)
 
   map("n", "<leader>cf", function()
-    vim.lsp.buf.format({ async = true, timeout_ms = 3000 })
+    vim.lsp.buf.format({
+      -- async = true,
+      timeout_ms = 3000,
+    })
   end, bufopts)
 
   vim.diagnostic.config({
@@ -32,61 +35,61 @@ end
 
 --- @type LazySpec
 local M = {
-  {
-    "williamboman/mason-lspconfig.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-    },
-    opts = {
-      automatic_installation = true,
-      ensure_installed = {
-        -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
-        "rust_analyzer",
-        "taplo", -- TOML
-        -- Back
-        "jedi_language_server",
-        "ruff_lsp",
-        "sqlls",
-        -- Front
-        "tsserver",
-        "tailwindcss",
-        -- "remark_ls",
-        "marksman",
-        "jsonls",
-        "html",
-        "emmet_ls",
-        "eslint",
-        "cssls",
-        "grammarly",
-        -- Environment
-        "docker_compose_language_service",
-        "dockerls",
-        "bashls",
-        --
-        "lua_ls",
-      },
-      handlers = {
-        function(server_name)
-          require("lspconfig")[server_name].setup({
-            on_attach = on_attach,
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-          })
-        end,
-      },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp",
-      -- "jose-elias-alvarez/null-ls.nvim",
-    },
-    -- config = function()
-    --   require("plugins.configs.lsp")
-    -- end,
-  },
+  -- {
+  --   "williamboman/mason-lspconfig.nvim",
+  --   dependencies = {
+  --     "williamboman/mason.nvim",
+  --   },
+  --   opts = {
+  --     automatic_installation = true,
+  --     ensure_installed = {
+  --       -- https://github.com/williamboman/mason-lspconfig.nvim/blob/main/doc/server-mapping.md
+  --       "rust_analyzer",
+  --       "taplo", -- TOML
+  --       -- Back
+  --       "jedi_language_server",
+  --       "ruff_lsp",
+  --       "sqlls",
+  --       -- Front
+  --       "tsserver",
+  --       "tailwindcss",
+  --       -- "remark_ls",
+  --       "marksman",
+  --       "jsonls",
+  --       "html",
+  --       "emmet_ls",
+  --       "eslint",
+  --       "cssls",
+  --       "grammarly",
+  --       -- Environment
+  --       "docker_compose_language_service",
+  --       "dockerls",
+  --       "bashls",
+  --       --
+  --       "lua_ls",
+  --     },
+  --     handlers = {
+  --       function(server_name)
+  --         require("lspconfig")[server_name].setup({
+  --           on_attach = on_attach,
+  --           capabilities = require("cmp_nvim_lsp").default_capabilities(),
+  --         })
+  --       end,
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   dependencies = {
+  --     "williamboman/mason-lspconfig.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --     "hrsh7th/cmp-nvim-lsp",
+  --     -- "jose-elias-alvarez/null-ls.nvim",
+  --   },
+  --   -- config = function()
+  --   --   require("plugins.configs.lsp")
+  --   -- end,
+  -- },
 }
 
 return M

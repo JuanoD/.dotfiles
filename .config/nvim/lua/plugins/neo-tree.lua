@@ -2,12 +2,19 @@
 local M = {
   {
     "miversen33/netman.nvim",
-    dependencies = { "nvim-neo-tree/neo-tree.nvim" },
+    branch = "async-1",
+    -- dependencies = { "nvim-neo-tree/neo-tree.nvim" },
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
-      sources = { "filesystem", "buffers", "git_status", "document_symbols", "netman.ui.neo-tree" },
+      sources = {
+        "filesystem",
+        "buffers",
+        "git_status",
+        "document_symbols",
+        "netman.ui.neo-tree",
+      },
       source_selector = {
         winbar = true,
         statusline = false,
