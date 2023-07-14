@@ -56,7 +56,7 @@ export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
 # ==================================
 # Evals
 # ==================================
-eval "$(/home/juanod/.local/share/rtx/bin/rtx activate -s bash)"
+eval "$(/home/juanod/.local/share/rtx/bin/rtx activate -s zsh)"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -70,6 +70,7 @@ alias lzd=lazydocker
 alias vim=nvim
 alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
 alias explorer=/mnt/c/Windows/explorer.exe
+alias cls=clear
 
 # ==================================
 # Functions
