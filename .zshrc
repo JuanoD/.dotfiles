@@ -140,18 +140,11 @@ rv() {
   rm -d $dest
 }
 
-p() {
-  pnpm "$@"
-}
+alias p=pnpm
 
-px() {
-  pnpm dlx "$@"
-}
+alias px="pnpm dlx"
 
-pe() {
-  pnpm exec "$@"
-}
-
+alias pe="pnpm exec"
 
 # tabtab source for packages
 # uninstall by removing these lines
