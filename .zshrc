@@ -26,11 +26,13 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # ==================================
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOQUIT=false
+GIT_AUTO_FETCH_INTERVAL=120
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   # ssh-agent
   tmux
+  git-auto-fetch
 )
 eval `keychain --eval id_rsa quick_rsa`
 source $ZSH/oh-my-zsh.sh
@@ -47,8 +49,11 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
-export EDITOR=nvim
+export PATH="$HOME/.moon/bin:$PATH"
+
+export EDITOR=~/.editor
 export VISUAL=nvim
 
 export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
@@ -72,12 +77,17 @@ alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --
 alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
 
+alias p=pnpm
+alias px="pnpm dlx"
+alias pe="pnpm exec"
+
+alias docker-compose="podman-compose"
 # ==================================
 # Functions
 # ==================================
-fvim() {
-  pushd $1 > /dev/null
-  nvim
+ans() {
+  pushd ~/.ansible > /dev/null
+  $@
   popd > /dev/null
 }
 
@@ -139,12 +149,6 @@ rv() {
   done
   rm -d $dest
 }
-
-alias p=pnpm
-
-alias px="pnpm dlx"
-
-alias pe="pnpm exec"
 
 # tabtab source for packages
 # uninstall by removing these lines
