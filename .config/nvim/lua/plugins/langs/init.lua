@@ -6,6 +6,10 @@ local M = {
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "lazyvim.plugins.extras.lang.docker" },
   { import = "lazyvim.plugins.extras.lang.python" },
+  {
+    "linux-cultist/venv-selector.nvim",
+    opts = { name = { "venv", ".venv" } }
+  },
   { import = "lazyvim.plugins.extras.dap.core" },
   {
     "neovim/nvim-lspconfig",

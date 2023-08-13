@@ -53,7 +53,7 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/.moon/bin:$PATH"
 
-export EDITOR=~/.editor
+export EDITOR=nvim
 export VISUAL=nvim
 
 export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
