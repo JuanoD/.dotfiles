@@ -13,7 +13,7 @@
   cmd = code --wait $MERGED
 [include]
   path = ~/.gitconfig-os
-[includeIf "gitdir:**/quick/"]
+[includeIf "gitdir/i:**/quick/"]
 	path = ~/.gitconfig-quick
 [alias]
 	slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
