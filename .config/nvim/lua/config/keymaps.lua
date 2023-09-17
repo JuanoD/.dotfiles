@@ -3,6 +3,22 @@
 -- Add any additional keymaps here
 local M = {}
 
+if vim.g.vscode then
+ M.mappings = {
+  -- Navigation
+  { "n", "<C-h>", "<cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", { noremap = true, silent = true, desc = "Window left" } },
+  { "x", "<C-h>", "<cmd>call VSCodeNotify('workbench.action.navigateLeft')<CR>", { noremap = true, silent = true, desc = "Window left" } },
+  { "n", "<C-j>", "<cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", { noremap = true, silent = true, desc = "Window down" } },
+  { "x", "<C-j>", "<cmd>call VSCodeNotify('workbench.action.navigateDown')<CR>", { noremap = true, silent = true, desc = "Window down" } },
+  { "n", "<C-k>", "<cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", { noremap = true, silent = true, desc = "Window up" } },
+  { "x", "<C-k>", "<cmd>call VSCodeNotify('workbench.action.navigateUp')<CR>", { noremap = true, silent = true, desc = "Window up" } },
+  { "n", "<C-l>", "<cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", { noremap = true, silent = true, desc = "Window right" } },
+  { "x", "<C-l>", "<cmd>call VSCodeNotify('workbench.action.navigateRight')<CR>", { noremap = true, silent = true, desc = "Window right" } },
+  -- Which key
+  { "n", "<Space>", "<cmd>call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true, desc = "Which key" } },
+  { "x", "<Space>", "<cmd>call VSCodeNotify('whichkey.show')<CR>", { noremap = true, silent = true, desc = "Which key" } },
+} 
+else
 M.mappings = {
   { "i", "jj", "<ESC>", { noremap = true, silent = true, desc = "<ESC>" } },
   { "n", "<C-P>", ":Telescope keymaps<CR>", { noremap = true, silent = true, desc = "Command palette" } },
@@ -11,6 +27,7 @@ M.mappings = {
   { "n", "<C-k>", "<cmd> TmuxNavigateUp<CR>", { noremap = true, silent = true, desc = "Window up" } },
   { "n", "<C-l>", "<cmd> TmuxNavigateRight<CR>", { noremap = true, silent = true, desc = "Window right" } },
 }
+end
 
 M.register_mappings = function(self)
   -- https://stackoverflow.com/a/51757357
@@ -19,7 +36,7 @@ M.register_mappings = function(self)
     if table then
       vim.keymap.set(table.unpack(mapping))
     end
-  end
+    end
 end
 
 M:register_mappings()
