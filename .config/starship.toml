@@ -4,10 +4,41 @@
 # ----------------------------------------------------
 
 add_newline = false
-format = '''
-[$line_break┌(\[[$shell]($style)\])(\[$status\])$fill(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])$fill(\[$jobs\])(\[$cmd_duration\])→](bold green)
-[│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time
-[└─$character](bold green) '''
+format = """
+[](#9A348E)\
+$os\
+$username\
+[](bg:#DA627D fg:#9A348E)\
+$directory\
+[](fg:#DA627D bg:#FCA17D)\
+[( $git_branch\
+$git_status )](fg:#DA627D bg:#FCA17D)\
+[](fg:#FCA17D bg:#86BBD8)\
+[($c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$python\
+$nim\
+$rust\
+$scala )](fg:#FCA17D bg:#86BBD8)\
+[](fg:#86BBD8 bg:#06969A)\
+$docker_context\
+[](fg:#06969A bg:#33658A)\
+[( $time\
+$status\
+$jobs )](fg:#06969A bg:#33658A)\
+[ ](fg:#33658A)\
+"""
+# format = '''
+# [$line_break┌(\[[$shell]($style)\])(\[$status\])$fill(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])$fill(\[$jobs\])(\[$cmd_duration\])→](bold green)
+# [│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time
+# [└─$character](bold green) '''
 
 [character]
 success_symbol = "[❯](bold green)"
@@ -22,8 +53,16 @@ format = "[ೱ$duration]($style)"
 disabled = false
 
 [directory]
+format = "[ $path ]($style)"
+style = "bg:#DA627D"
+truncation_length = 3
 truncation_symbol = "…/"
-truncation_length = 8
+
+[directory.substitutions]
+"Documents" = ""
+"Downloads" = ""
+"Music" = ""
+"Pictures" = ""
 
 [fill]
 symbol = "─"
@@ -31,20 +70,22 @@ style = "bold green"
 
 [git_branch]
 format = "[$symbol $branch]($style)"
+style = "bg:#FCA17D"
 symbol = ""
 
 [git_status]
 format = '([( $ahead_behind)( $staged)( $renamed)( $modified)( $deleted)( $conflicted)( $untracked)( $stashed)]($style))'
-conflicted = "[!$count](red)"
-ahead = "[⇡$count](green)"
-behind = "[⇣$count](red)"
-diverged = "[$ahead_count](green)↕[$behind_count](red)"
-untracked = "[?$count](purple)"
+conflicted = "!$count"
+style = "bg:#FCA17D"
+ahead = "⇡$count"
+behind = "⇣$count"
+diverged = "$ahead_count↕$behind_count"
+untracked = "?$count"
 stashed = ""
-modified = "[~$count](yellow)"
-staged = '[+$count](green)'
-renamed = "[»$count](cyan)"
-deleted = "[-$count](red)"
+modified = "~$count"
+staged = '+$count'
+renamed = "»$count"
+deleted = "-$count"
 
 [hostname]
 format = "[($hostname)]($style)"
@@ -55,7 +96,16 @@ disabled = true
 
 [nodejs]
 symbol = ""
-format = "[($symbol$version)]($style)"
+style = "bg:#86BBD8"
+format = "[ ($symbol$version)]($style)"
+
+[os]
+style = "bg:#9A348E"
+disabled = false
+
+[os.symbols]
+Manjaro = "󱘊"
+Windows = ""
 
 [package]
 symbol = ""
@@ -67,11 +117,13 @@ format = "[$symbol$version]($style)"
 
 [python]
 symbol = ""
-format = "[${symbol}${pyenv_prefix}(${version})(-\\($virtualenv\\))]($style)"
+style = "bg:#86BBD8"
+format = "[ ${symbol}${pyenv_prefix}(${version})]($style)"
 
 [rust]
 symbol = ""
-format = "[$symbol($version )]($style)"
+style = "bg:#86BBD8"
+format = "[ $symbol($version)]($style)"
 
 [shell]
 format = "[$indicator]($style)"
@@ -83,9 +135,16 @@ zsh_indicator = ""
 disabled = false
 
 [status]
-format = "[$symbol$status]($style)"
+format = "$symbol$status"
 symbol = "❌"
 disabled = false
 
 [time]
 disabled = true
+
+[username]
+show_always = true
+style_user = "bg:#9A348E"
+style_root = "bg:#9A348E"
+format = '[$user ]($style)'
+disabled = false
