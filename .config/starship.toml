@@ -9,9 +9,9 @@ format = """
 [](green)\
 [$os\
 $username](bg:green fg:base)\
-[](bg:red fg:green)\
-[$directory](bg:red fg:base)\
-[](fg:red bg:yellow)\
+[](bg:lavender fg:green)\
+[$directory](bg:lavender fg:base)\
+[](fg:lavender bg:yellow)\
 [( $git_branch\
 $git_status )](fg:crust bg:yellow)\
 [](fg:yellow bg:blue)\
@@ -30,12 +30,12 @@ $rust\
 $scala )](fg:base bg:blue)\
 [](fg:blue bg:teal)\
 [$docker_context](fg:base bg:teal)\
-[](fg:teal bg:lavender)\
+[](fg:teal bg:red)\
 [($time\
 $status\
 $cmd_duration\
-$jobs )](fg:base bg:lavender)\
-[ ](fg:lavender)\
+$jobs )](fg:base bg:red)\
+[ ](fg:red)\
 """
 # format = '''
 # [$line_break┌(\[[$shell]($style)\])(\[$status\])$fill(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])$fill(\[$jobs\])(\[$cmd_duration\])→](bold green)
@@ -60,9 +60,13 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
+"Documentos" = ""
 "Documents" = ""
 "Downloads" = ""
+"Descargas" = ""
 "Music" = ""
+"Música" = ""
+"Imágenes" = ""
 "Pictures" = ""
 
 [fill]
