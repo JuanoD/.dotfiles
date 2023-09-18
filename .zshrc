@@ -61,7 +61,10 @@ export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
 # ==================================
 # Evals
 # ==================================
-eval "$(/home/juanod/.local/share/rtx/bin/rtx activate -s zsh)"
+RTX="$HOME/.local/share/rtx/bin/rtx"
+if [[ -e $RTX ]]; then
+  eval "$($RTX activate -s zsh)"
+fi
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
@@ -150,6 +153,7 @@ rv() {
   rm -d $dest
 }
 
+# https://pnpm.io/completion
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
