@@ -136,7 +136,7 @@ disabled = false
 
 [status]
 format = "$symbol$status"
-symbol = "❌"
+symbol = ""
 disabled = false
 
 [time]
