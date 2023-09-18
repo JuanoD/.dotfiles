@@ -30,8 +30,9 @@ $scala )](fg:#FCA17D bg:#86BBD8)\
 [](fg:#86BBD8 bg:#06969A)\
 $docker_context\
 [](fg:#06969A bg:#33658A)\
-[( $time\
+[($time\
 $status\
+$cmd_duration\
 $jobs )](fg:#06969A bg:#33658A)\
 [ ](fg:#33658A)\
 """
@@ -49,7 +50,7 @@ symbol = "△"
 format = "[$symbol($version)]($style)"
 
 [cmd_duration]
-format = "[ೱ$duration]($style)"
+format = " ೱ$duration"
 disabled = false
 
 [directory]
@@ -135,7 +136,7 @@ zsh_indicator = ""
 disabled = false
 
 [status]
-format = "$symbol$status"
+format = " $symbol$status"
 symbol = ""
 disabled = false
 
