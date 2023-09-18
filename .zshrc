@@ -76,9 +76,14 @@ eval "$(starship init zsh)"
 # ==================================
 alias lzd=lazydocker
 alias vim=nvim
-alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
 alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
+
+if [[ -e "$(which exa)" ]]; then
+  alias ls="exa --group-directories-first --time-style=long-iso --color=auto --icons"
+else
+  alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
+fi
 
 alias p=pnpm
 alias px="pnpm dlx"
