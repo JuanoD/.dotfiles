@@ -2,7 +2,7 @@
 local M = {
   {
     "miversen33/netman.nvim",
-    branch = "async-1",
+    branch = "v1.15",
     -- dependencies = { "nvim-neo-tree/neo-tree.nvim" },
   },
   {

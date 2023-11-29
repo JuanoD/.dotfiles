@@ -1,12 +1,13 @@
 --- @type LazySpec
 local M = {
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
+    enabled = false,
     -- dependencies = {
     --   "nvim-lua/plenary.nvim",
     -- },
     opts = function(_, opts)
-      local null_ls = require("null-ls")
+      local none_ls = require("none-ls")
       -- local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
       -- return {
       --   on_attach = function(client, bufnr)
@@ -75,7 +76,7 @@ local M = {
       --   null_ls.builtins.diagnostics.yamllint,
       -- },
       vim.list_extend(opts.sources, {
-        null_ls.builtins.code_actions.gitrebase,
+        none_ls.builtins.code_actions.gitrebase,
       })
     end,
   },
