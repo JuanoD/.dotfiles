@@ -34,7 +34,7 @@ plugins=(
   tmux
   git-auto-fetch
 )
-eval `keychain --eval id_rsa quick_rsa`
+# eval `keychain --eval id_rsa quick_rsa`
 source $ZSH/oh-my-zsh.sh
 # export TERM=screen-256color
 
@@ -53,8 +53,13 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 export PATH="$HOME/.moon/bin:$PATH"
 
-export EDITOR=nvim
-export VISUAL=nvim
+if [[ -z "$(echo $XDG_SESSION_TYPE | grep tty)" ]]; then
+  export EDITOR="code --wait"
+  export VISUAL="code --wait"
+else
+  export EDITOR=nvim
+  export VISUAL=nvim
+fi
 
 export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
 
@@ -78,6 +83,8 @@ alias lzd=lazydocker
 alias vim=nvim
 alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
+alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\""
+alias k=kubectl
 
 if [[ -e "$(which exa)" ]]; then
   alias ls="exa --group-directories-first --time-style=long-iso --color=auto --icons"
