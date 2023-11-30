@@ -89,6 +89,9 @@ deleted = "-$count"
 format = "[($hostname)]($style)"
 disabled = false
 
+[jobs]
+format = " $symbol$number"
+
 [kubernetes]
 disabled = false
 symbol = "☸"
