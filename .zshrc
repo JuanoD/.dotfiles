@@ -85,6 +85,7 @@ alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
 alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\""
 alias k=kubectl
+alias qans=/$HOME/Documentos/Quick/ansible/dev
 
 if [[ -e "$(which exa)" ]]; then
   alias ls="exa --group-directories-first --time-style=long-iso --color=auto --icons"
@@ -97,9 +98,20 @@ alias px="pnpm dlx"
 alias pe="pnpm exec"
 
 alias docker-compose="podman-compose"
+
+# alias my_ip="ip -4 -o addr show eth0 | awk '{print \$4}' | grep -oP '(\d+\.){3}\d+'"
 # ==================================
 # Functions
 # ==================================
+ssh_tunnel() {
+  if ([[ -z $2 ]]); then
+    PORT=5432
+  else
+    PORT=$2
+  fi
+  ssh -N -L ":${PORT}:localhost:${PORT}" -o ServerAliveInterval=60 $1
+}
+
 ans() {
   pushd ~/.ansible > /dev/null
   $@
