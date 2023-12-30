@@ -1,8 +1,117 @@
+# Setting up my OS
+
+## General
+
+Make sure to backup saves. On windows, use [GameSave Manager](https://www.gamesave-manager.com/), but also check for [cross-platform alternatives](https://alternativeto.net/software/gamesave-manager/), such as [Game Backup Monitor](http://mikemaximus.github.io/gbm-web/index.html) or [Ludusavi](https://github.com/mtkennerly/ludusavi).
+
+Ensure VSCode backups correctly. Open the command palette and search for `Settings Sync: Show Synced Data`.
+
+Make sure firefox sync backed up recently.
+
+## Linux
+
+Before installing the new OS, backup the packages installed with `pacman -Qe > pkgs` or `pacman -Qqe > pkgs` for output without version.
+
+Some non-explicitly installed packages (dependencies maybe?) get on the list, so some manual work for re-installing is required.
+
+### System config
+
+Check [this](https://www.reddit.com/r/linuxquestions/comments/r9w8yh/comment/hnk0ybc/) on how to make F-keys work as F-keys.
+
+Don't forget to `ssh-add` all required keys and check they work correctly with `seahorse`.
+
+```sh
+sudo timedatectl set-local-rtc 1
+systemctl --user enable --now pipewire-sink-stereo@MixOutput.service
+systemctl --user enable --now pipewire-source-stereo@MixInput.service
+```
+
+Add a custom shortcut for `gnome-system-monitor`.
+
+Open `gnome-tweaks`:
+  - Disable mouse middle click paste
+  - Startup applications: thunderbird, discord, qpwgraph
+
+Check this [wiki entry](<https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup>) if there is any issue with graphics.
+
+### Terminal
+
+```sh
+ln ~/.dotfiles/.zshrc ~
+ln ~/.dotfiles/.tmux.conf ~
+ln ~/.dotfiles/.config/starship.toml ~/.config/starship.toml
+# The next two can be found in the package manager, but just in case
+# git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+# git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source .tmux.conf
+# Tmux Prefix + I
+```
+
+### Tools
+
+```sh
+# JS
+volta install node
+volta install pnpm
+# Moon
+curl -fsSL https://moonrepo.dev/install/moon.sh | bash
+# Python
+curl https://pyenv.run | bash
+# Check available versions and pick last
+pyenv install --list
+pyenv install <version>
+python -m pip install -U pipx
+pipx install ansible-core poetry git-sim mprof
+# Rust
+curl https://sh.rustup.rs -sSf | sh
+# Others
+curl -sSf https://atlasgo.sh | sh
+```
+
+### Completions
+
+```sh
+pnpm install-completion zsh
+moon completions > ~/.config/tabtab/zsh/moon.zsh
+echo '[[ -f ~/.config/tabtab/zsh/moon.zsh ]] && . ~/.config/tabtab/zsh/moon.zsh || true' >> ~/.config/tabtab/zsh/__tabtab.zsh
+k3d completion zsh > ~/.config/tabtab/zsh/k3d.zsh
+echo '[[ -f ~/.config/tabtab/zsh/k3d.zsh ]] && . ~/.config/tabtab/zsh/k3d.zsh || true' >> ~/.config/tabtab/zsh/__tabtab.zsh
+```
+
+Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-terminal).
+
+### Gnome extensions
+
+- [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/).
+- [Firefox PiP Always on Top](https://extensions.gnome.org/extension/5306/firefox-pip-always-on-top/).
+- [Just Perfection](https://gitlab.gnome.org/jrahmatzadeh/just-perfection).
+- [Tray Icons: Reloaded](https://github.com/MartinPL/Tray-Icons-Reloaded).
+  - Tray icons limit: 5
+  - Icon size: 16
+  - Spacing - Tray Margin: 4 0
+  - Spacing - Icon Margin: 0 2
+  - Spacing - Icon Padding: 0 6
+- Dash to dock:
+  - Position and Size -> Intelligent autohide ->  -> 󱋭 Enable in fullscreen mode
+  - Launchers -> 󱋭 Isolate monitors
+  - Behavior -> Click action -> Focus, minimize or show previews
+    -GSConnect
+
+### Others
+
+- Thunderbird
+
+  Install `EDS Calendar Integration` and `KeepRunning` addons.
+
+## Windows
+
 Install [posh-cli](https://github.com/bergmeister/posh-cli) and [starship](https://starship.rs/). Make sure starship command is the last one.
 
 To create [Symbolic Links](https://winaero.com/create-symbolic-link-windows-10-powershell/) for important files, run this on an elevated powershell prompt:
 
-```
+```pwsh
 New-Item -ItemType SymbolicLink -Path "~/.gitconfig" -Target ".dotfiles/.gitconfig"
 
 New-Item -ItemType SymbolicLink -Path "~/.gitconfig-windows" -Target ".dotfiles/.gitconfig-windows"
@@ -14,13 +123,18 @@ Before installing chocolatey, I run `New-Item -ItemType SymbolicLink -Path "C:/P
 
 To install [chocolatey](https://docs.chocolatey.org/en-us/choco/setup) run
 
-```
+```pwsh
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
 Then run `choco install Packages.config` which can be generated with ChocolateyGUI, that can be installed with `choco install chocolateygui`
 
-To personalize the terminal, run `mkdir .config` and `New-Item -ItemType SymbolicLink -Path "~/.config/starship.toml" -Target "../.dotfiles/starship.toml"`
+To personalize the terminal:
+
+```pwsh
+mkdir .config
+New-Item -ItemType SymbolicLink -Path "~/.config/starship.toml" -Target "../.dotfiles/starship.toml"
+```
 
 In order to add [ssh](https://docs.github.com/es/github/authenticating-to-github/connecting-to-github-with-ssh/about-ssh) support, OpenSSH service must be enabled in `services.msc`. On windows, [some config](https://gist.github.com/danieldogeanu/16c61e9b80345c5837b9e5045a701c99) must be changed in order to enable the ssh auth `git config --system core.sshCommand C:/Windows/System32/OpenSSH/ssh.exe`. Also, check [this](https://dev.to/rafaelcpalmeida/managing-multiple-git-configurations-1gdh) for multiple git configurations.
 
@@ -38,7 +152,7 @@ Some changes I make to environment variables
 |                                 |               D:\\Programs\VSCode\\bin |
 |                                 |               D:\\msys64\\mingw64\\bin |
 |                                 |                   D:\\msys64\\usr\\bin |
-|                                 |             D:\\msys64\\scripts |
+|                                 |                    D:\\msys64\\scripts |
 |                                 |     C:\\Program Files\\PowerShell\\7\\ |
 | PLATFORMIO_CORE_DIR             |           D:\\ProgramData\\.platformio |
 | PLATFORMIO_SETTING_PROJECTS_DIR | D:\Juano\Documents\Projects\PlatformIO |
