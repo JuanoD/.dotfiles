@@ -30,7 +30,7 @@ Add a custom shortcut for `gnome-system-monitor`.
 
 Open `gnome-tweaks`:
   - Disable mouse middle click paste
-  - Startup applications: thunderbird, discord, qpwgraph
+  - Startup applications: `thunderbird`, `discord`, `qpwgraph`
 
 Check this [wiki entry](<https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup>) if there is any issue with graphics.
 
@@ -62,6 +62,8 @@ curl https://pyenv.run | bash
 # Check available versions and pick last
 pyenv install --list
 pyenv install <version>
+pyenv global <version>
+which python # Check if it was correctly added to the environment
 python -m pip install -U pipx
 pipx install ansible-core poetry git-sim mprof
 # Rust
@@ -86,8 +88,8 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
 
 - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/).
 - [Firefox PiP Always on Top](https://extensions.gnome.org/extension/5306/firefox-pip-always-on-top/).
-- [Just Perfection](https://gitlab.gnome.org/jrahmatzadeh/just-perfection).
-- [Tray Icons: Reloaded](https://github.com/MartinPL/Tray-Icons-Reloaded).
+- [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/).
+- [Tray Icons: Reloaded](https://extensions.gnome.org/extension/2890/tray-icons-reloaded/).
   - Tray icons limit: 5
   - Icon size: 16
   - Spacing - Tray Margin: 4 0
@@ -97,7 +99,7 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
   - Position and Size -> Intelligent autohide ->  -> 󱋭 Enable in fullscreen mode
   - Launchers -> 󱋭 Isolate monitors
   - Behavior -> Click action -> Focus, minimize or show previews
-    -GSConnect
+- GSConnect
 
 ### Others
 

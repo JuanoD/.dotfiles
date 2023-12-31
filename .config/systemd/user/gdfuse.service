@@ -1,0 +1,11 @@
+[Unit]
+Description = Mount my gdrive sync
+
+[Service]
+
+StandardOutput = journal
+
+ExecStart = google-drive-ocamlfuse %h/.syncs/drive -debug
+
+[Install]
+WantedBy = default.target
