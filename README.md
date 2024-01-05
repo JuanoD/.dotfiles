@@ -29,8 +29,9 @@ systemctl --user enable --now pipewire-source-stereo@MixInput.service
 Add a custom shortcut for `gnome-system-monitor`.
 
 Open `gnome-tweaks`:
-  - Disable mouse middle click paste
-  - Startup applications: `thunderbird`, `discord`, `qpwgraph`
+
+- Disable mouse middle click paste
+- Startup applications: `thunderbird`, `discord`, `qpwgraph`
 
 Check this [wiki entry](<https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup>) if there is any issue with graphics.
 
@@ -70,6 +71,17 @@ pipx install ansible-core poetry git-sim mprof
 curl https://sh.rustup.rs -sSf | sh
 # Others
 curl -sSf https://atlasgo.sh | sh
+```
+
+#### Path
+
+Take a look on [arch wiki page for environment variables](https://wiki.archlinux.org/title/Environment_variables) on how to add directories to path in different situations.
+
+For now, I just add volta (node) to solve [vscode-jest#741](https://github.com/jest-community/vscode-jest/issues/741).
+
+```sh
+echo 'export VOLTA_HOME="$HOME/.volta"' >> ~/.profile
+echo 'export PATH="$VOLTA_HOME/bin:$PATH"' >> ~/.profile
 ```
 
 ### Completions
