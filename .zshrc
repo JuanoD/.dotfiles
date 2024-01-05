@@ -24,7 +24,9 @@ zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 # ==================================
 # PLUGINS
 # ==================================
-ZSH_TMUX_AUTOSTART=true
+if [[ $TERM_PROGRAM != 'vscode' ]]; then
+  ZSH_TMUX_AUTOSTART=true
+fi
 ZSH_TMUX_AUTOQUIT=false
 GIT_AUTO_FETCH_INTERVAL=120
 plugins=(
@@ -83,9 +85,10 @@ alias lzd=lazydocker
 alias vim=nvim
 alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
+alias doco="docker compose"
 alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\""
 alias k=kubectl
-alias qans=/$HOME/Documentos/Quick/ansible/dev
+alias qans=/$HOME/Documents/Quick/ansible/dev
 
 if [[ -e "$(which exa)" ]]; then
   alias ls="exa --group-directories-first --time-style=long-iso --color=auto --icons"
