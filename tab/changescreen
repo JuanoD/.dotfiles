@@ -1,0 +1,6 @@
+#! /usr/bin/bash
+
+T="HID 256c:006e"
+xsetwacom set "$T Pad pad" MapToOutput next
+xsetwacom set "$T Touch Strip pad" MapToOutput next
+xsetwacom set "$T Pen stylus" MapToOutput next
