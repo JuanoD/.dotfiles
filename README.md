@@ -101,6 +101,7 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
 - [Color Picker](https://extensions.gnome.org/extension/3396/color-picker/).
 - [Firefox PiP Always on Top](https://extensions.gnome.org/extension/5306/firefox-pip-always-on-top/).
 - [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/).
+- [Hanabi](https://github.com/jeffshee/gnome-ext-hanabi).
 - [Tray Icons: Reloaded](https://extensions.gnome.org/extension/2890/tray-icons-reloaded/).
   - Tray icons limit: 5
   - Icon size: 16
@@ -112,6 +113,7 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
   - Launchers -> 󱋭 Isolate monitors
   - Behavior -> Click action -> Focus, minimize or show previews
 - GSConnect
+- Custom Accent Colors
 
 ### Others
 
