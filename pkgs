@@ -5,7 +5,10 @@ aws-cli
 base-devel
 bat
 blender
+bottles
 carla
+catppuccin-gtk-theme-mocha
+clapper
 clementine
 dbeaver
 dconf-editor
@@ -42,7 +45,7 @@ kompose
 krita
 kubectl
 kubie
-libreoffice-still
+libreoffice-fresh
 linux-steam-integration
 lutris
 manjaro-pipewire
@@ -53,8 +56,12 @@ neovim
 obs-studio
 obsidian
 okular
+otf-monaspace-nerd
 piper
 pipewire-pulse
+podman
+podman-desktop-bin
+podman-dnsname
 protontricks
 protonup-qt-bin
 qbittorrent

@@ -113,6 +113,7 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
   - Launchers -> 󱋭 Isolate monitors
   - Behavior -> Click action -> Focus, minimize or show previews
 - GSConnect
+- [Fullscreen Avoider](https://extensions.gnome.org/extension/4362/fullscreen-avoider/)
 - Custom Accent Colors
 
 ### Others
@@ -120,6 +121,10 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
 - Thunderbird
 
   Install `EDS Calendar Integration` and `KeepRunning` addons.
+
+- Themes:
+  - [catppuccin/gtk](https://github.com/catppuccin/gtk).
+  - [Catppuccin GTK Theme](https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme/).
 
 ## Windows
 
