@@ -12,7 +12,7 @@ T="$B Pad pad"
 # xsetwacom set $T Button 10
 
 
-xsetwacom set $T Button 11 "key f14"
+xsetwacom set "$T" Button 11 "key f14"
 # xsetwacom set $T Button 12
 
 # xsetwacom set $T Button 13
@@ -23,4 +23,4 @@ xsetwacom set $T Button 11 "key f14"
 
 S="$B Pen stylus"
 
-xsetwacom set $S Button 2 "key e"
+xsetwacom set "$S" Button 2 "key e"
