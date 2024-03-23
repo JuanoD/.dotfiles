@@ -1,4 +1,3 @@
-
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored _approximate
@@ -19,13 +18,16 @@ bindkey -v
 # bindkey '5~' kill-word
 
 export ZSH="$HOME/.oh-my-zsh"
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' mode reminder # just remind me to update when it's time
 
 # ==================================
 # PLUGINS
 # ==================================
-if [[ $TERM_PROGRAM != 'vscode' ]]; then
+if [[ $TERM_PROGRAM != 'vscode' && $TERM_PROGRAM != 'WarpTerminal' ]]; then
   ZSH_TMUX_AUTOSTART=true
+fi
+if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
+  SPACESHIP_PROMPT_ASYNC=FALSE
 fi
 ZSH_TMUX_AUTOQUIT=false
 GIT_AUTO_FETCH_INTERVAL=120
@@ -100,8 +102,6 @@ alias p=pnpm
 alias px="pnpm dlx"
 alias pe="pnpm exec"
 
-alias docker-compose="podman-compose"
-
 # alias my_ip="ip -4 -o addr show eth0 | awk '{print \$4}' | grep -oP '(\d+\.){3}\d+'"
 # ==================================
 # Functions
@@ -116,16 +116,16 @@ ssh_tunnel() {
 }
 
 ans() {
-  pushd ~/.ansible > /dev/null
+  pushd ~/.ansible >/dev/null
   $@
-  popd > /dev/null
+  popd >/dev/null
 }
 
 v() {
   if [[ -d $1 ]]; then
-    pushd $1 > /dev/null
+    pushd $1 >/dev/null
     nvim
-    popd > /dev/null
+    popd >/dev/null
   else
     nvim "$@"
   fi
@@ -133,15 +133,15 @@ v() {
 
 rvim() {
   dir=$2
-  dir="${dir%/}"             # strip trailing slash (if any)
+  dir="${dir%/}" # strip trailing slash (if any)
   subdir="${dir##*/}"
 
   dest="$HOME/.rmounts/${subdir}"
-  mkdir -p $dest 1> /dev/null
+  mkdir -p $dest 1>/dev/null
   sshfs $1:$2 $dest
-  pushd $dest 1> /dev/null
+  pushd $dest 1>/dev/null
   nvim
-  popd 1> /dev/null
+  popd 1>/dev/null
   fuser -kfs -TERM $dest
   fuser -v $dest
   fusermount -u $dest >/dev/null 2>&1
@@ -157,20 +157,20 @@ rvim() {
 
 rv() {
   dir=$2
-  dir="${dir%/}"             # strip trailing slash (if any)
+  dir="${dir%/}" # strip trailing slash (if any)
   subdir="${dir##*/}"
 
   dest="$HOME/.rmounts/${subdir}"
-  mkdir -p $dest 1> /dev/null
+  mkdir -p $dest 1>/dev/null
   rclone --vfs-cache-mode full mount $1:$2 $dest &
   mount=$!
   while [[ -s $dest ]]; do
     sleep 0.1
     echo -n .
   done
-  pushd $dest 1> /dev/null
+  pushd $dest 1>/dev/null
   nvim
-  popd 1> /dev/null
+  popd 1>/dev/null
   kill -INT $mount
   fuser -v $dest
   while [[ ! -s $dest ]]; do
