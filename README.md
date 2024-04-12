@@ -126,6 +126,20 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
   - [catppuccin/gtk](https://github.com/catppuccin/gtk).
   - [Catppuccin GTK Theme](https://github.com/Fausto-Korpsvart/Catppuccin-GTK-Theme/).
 
+### Workarounds
+
+In case some webview based apps fail to render, using the `WEBKIT_DISABLE_DMABUF_RENDERER=1` environment may work. If it does, check if modesetting is enabled
+
+```sh
+cat /sys/module/nvidia_drm/parameters/modeset
+```
+
+If it prints `N`, enable it and restart
+
+```sh
+echo options nvidia_drm modeset=1 | sudo tee /etc/modprobe.d/nvidia_drm.conf
+```
+
 ## Windows
 
 Install [posh-cli](https://github.com/bergmeister/posh-cli) and [starship](https://starship.rs/). Make sure starship command is the last one.
