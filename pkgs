@@ -56,11 +56,13 @@ manjaro-pipewire
 microsoft-edge-stable-bin
 mtr
 naps2-bin
+nautilus-share
 neovim
 obs-studio
 obsidian
 okular
 otf-monaspace-nerd
+pavucontrol
 piper
 pipewire-jack
 podman
@@ -96,5 +98,6 @@ wine
 winetricks
 wireplumber
 xournalpp
+zellij
 zerotier-one
 zotero-bin
