@@ -103,6 +103,10 @@ if [[ -e "$(which zoxide)" ]]; then
   alias cd="zoxide"
 fi
 
+if [[ -e "$(which bat)" ]]; then
+  alias cat="bat"
+fi
+
 alias p=pnpm
 alias px="pnpm dlx"
 alias pe="pnpm exec"
