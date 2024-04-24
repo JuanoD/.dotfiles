@@ -24,7 +24,7 @@ zstyle ':omz:update' mode reminder # just remind me to update when it's time
 # PLUGINS
 # ==================================
 if [[ $TERM_PROGRAM != 'vscode' && $TERM_PROGRAM != 'WarpTerminal' ]]; then
-  ZSH_TMUX_AUTOSTART=true
+  # ZSH_TMUX_AUTOSTART=true
 fi
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   SPACESHIP_PROMPT_ASYNC=FALSE
