@@ -33,7 +33,7 @@ Open `gnome-tweaks`:
 - Disable mouse middle click paste
 - Startup applications: `thunderbird`, `discord`, `qpwgraph`
 
-Check this [wiki entry](<https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup>) if there is any issue with graphics.
+Check this [wiki entry](https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup) if there is any issue with graphics.
 
 ### Terminal
 
@@ -113,8 +113,9 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
   - Launchers -> 󱋭 Isolate monitors
   - Behavior -> Click action -> Focus, minimize or show previews
 - GSConnect
-- [Fullscreen Avoider](https://extensions.gnome.org/extension/4362/fullscreen-avoider/)
+- [Fullscreen Avoider](https://extensions.gnome.org/extension/4362/fullscreen-avoider/).
 - Custom Accent Colors
+- [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/).
 
 ### Others
 
