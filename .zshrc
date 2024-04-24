@@ -99,6 +99,10 @@ else
   alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
 fi
 
+if [[ -e "$(which zoxide)" ]]; then
+  alias cd="zoxide"
+fi
+
 alias p=pnpm
 alias px="pnpm dlx"
 alias pe="pnpm exec"
