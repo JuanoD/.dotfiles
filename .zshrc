@@ -56,6 +56,11 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# proto
+export PROTO_HOME="$HOME/.proto"
+export PATH="$PROTO_HOME/bin:$PATH"
+# export PATH="$PROTO_HOME/shims:$PATH"
+# moon
 export PATH="$HOME/.moon/bin:$PATH"
 
 if [[ -z "$(echo $XDG_SESSION_TYPE | grep tty)" ]]; then
@@ -100,7 +105,7 @@ else
 fi
 
 if [[ -e "$(which zoxide)" ]]; then
-  alias cd="zoxide"
+  eval "$(zoxide init zsh)"
 fi
 
 if [[ -e "$(which bat)" ]]; then
