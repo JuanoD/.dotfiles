@@ -1,3 +1,4 @@
+alacritty
 android-tools
 anydesk-bin
 audacity
@@ -47,6 +48,7 @@ iotop
 iriunwebcam-bin
 jdk-temurin
 joycond-git
+jq
 kdash-bin
 keepassxc
 kompose
@@ -96,6 +98,7 @@ tmux
 ttf-cascadia-code-nerd
 v4l2loopback-dkms
 vcluster-bin
+virtualbox
 visual-studio-code-bin
 vlc
 volta-bin
@@ -108,3 +111,4 @@ xournalpp
 zellij
 zerotier-one
 zotero-bin
+zoxide

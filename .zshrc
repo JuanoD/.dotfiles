@@ -49,6 +49,9 @@ PATH="$HOME/.local/bin:$PATH"
 
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+remove_volta() {
+  export PATH="$(echo $PATH | sed "s#$VOLTA_HOME/bin##g")"
+}
 export VOLTA_FEATURE_PNPM=1
 
 export PYENV_ROOT="$HOME/.pyenv"
@@ -56,12 +59,22 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# proto
-export PROTO_HOME="$HOME/.proto"
-export PATH="$PROTO_HOME/bin:$PATH"
-# export PATH="$PROTO_HOME/shims:$PATH"
 # moon
 export PATH="$HOME/.moon/bin:$PATH"
+# proto
+export PROTO_HOME="$HOME/.proto"
+# export PATH="$PROTO_HOME/bin:$PATH"
+# export PATH="$PROTO_HOME/shims:$PATH"
+proto_shims() {
+  PROTO_PATH="$PROTO_HOME/shims:$PROTO_HOME/bin"
+  if [[ -z "$(echo $PATH | grep $PROTO_PATH)" ]]; then
+    export PATH="$PROTO_PATH:$PATH"
+    echo "Added shims"
+  else
+    export PATH="$(echo $PATH | sed "s#$PROTO_PATH##g")"
+    echo "Removed shims"
+  fi
+}
 
 if [[ -z "$(echo $XDG_SESSION_TYPE | grep tty)" ]]; then
   export EDITOR="code --wait"
@@ -76,13 +89,15 @@ export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
 # ==================================
 # Evals
 # ==================================
-RTX="$HOME/.local/share/rtx/bin/rtx"
-if [[ -e $RTX ]]; then
-  eval "$($RTX activate -s zsh)"
+MISE="$HOME/.local/bin/mise"
+if [[ -e $MISE ]]; then
+  eval "$($MISE activate -s zsh)"
 fi
 
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if [[ -e "$(which pyenv)" ]]; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 eval "$(starship init zsh)"
 
@@ -96,6 +111,7 @@ alias cls=clear
 alias doco="docker compose"
 alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\""
 alias k=kubectl
+alias f="$(pay-respects zsh)"
 alias qans=/$HOME/Documents/Quick/ansible/dev
 
 if [[ -e "$(which exa)" ]]; then
@@ -106,6 +122,7 @@ fi
 
 if [[ -e "$(which zoxide)" ]]; then
   eval "$(zoxide init zsh)"
+  alias cd=z
 fi
 
 if [[ -e "$(which bat)" ]]; then
