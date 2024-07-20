@@ -107,8 +107,7 @@ disabled = true
 
 [nodejs]
 symbol = ""
-style = "bg:#86BBD8"
-format = "[ ($symbol$version)]($style)"
+format = "( ($symbol$version))"
 
 [os]
 format="$symbol"
@@ -129,13 +128,11 @@ format = "[$symbol$version]($style)"
 
 [python]
 symbol = ""
-style = "bg:#86BBD8"
-format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+format = '( ${symbol}${pyenv_prefix}(${version})(\($virtualenv\)))'
 
 [rust]
 symbol = ""
-style = "bg:#86BBD8"
-format = "[ $symbol($version)]($style)"
+format = "( $symbol($version))"
 
 [shell]
 format = "[$indicator]($style)"
