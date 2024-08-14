@@ -22,8 +22,7 @@ Don't forget to `ssh-add` all required keys and check they work correctly with `
 
 ```sh
 sudo timedatectl set-local-rtc 1
-systemctl --user enable --now pipewire-sink-stereo@MixOutput.service
-systemctl --user enable --now pipewire-source-stereo@MixInput.service
+systemctl --user restart pipewire.service # Apply null sync source
 ```
 
 Add a custom shortcut for `gnome-system-monitor`.
