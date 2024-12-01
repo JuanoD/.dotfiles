@@ -16,11 +16,13 @@ clementine
 datagrip
 dbeaver
 dconf-editor
+devbox-bin
 digimend-kernel-drivers-dkms
 discord
 dive
 docker
 docker-compose
+doggo-bin
 dust
 easyeffects
 fd
@@ -35,7 +37,8 @@ gparted
 gsmartcontrol
 gucharmap
 handbrake
-hardinfo
+hardinfo2
+helix
 helm
 helmfile
 helvum
@@ -46,10 +49,12 @@ hunspell-es_co
 inkscape
 iotop
 iriunwebcam-bin
-jdk-temurin
+jdk21-temurin
 joycond-git
 jq
+kanata-bin
 kdash-bin
+kdenlive
 keepassxc
 kompose
 krita
@@ -69,6 +74,7 @@ obsidian
 okular
 otf-monaspace-nerd
 pavucontrol
+pay-respects-bin
 piper
 pipewire-jack
 podman
@@ -97,6 +103,7 @@ tilt-bin
 tmux
 ttf-cascadia-code-nerd
 v4l2loopback-dkms
+vagrant
 vcluster-bin
 virtualbox
 visual-studio-code-bin
@@ -108,6 +115,7 @@ wireplumber
 wireshark-qt
 woeusb-ng
 xournalpp
+yq
 zellij
 zerotier-one
 zotero-bin
