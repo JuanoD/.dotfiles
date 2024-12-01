@@ -65,6 +65,8 @@ export PATH="$HOME/.moon/bin:$PATH"
 export PROTO_HOME="$HOME/.proto"
 # export PATH="$PROTO_HOME/bin:$PATH"
 # export PATH="$PROTO_HOME/shims:$PATH"
+
+export DEVBOX_NO_PROMPT=1
 proto_shims() {
   PROTO_PATH="$PROTO_HOME/shims:$PROTO_HOME/bin"
   if [[ -z "$(echo $PATH | grep $PROTO_PATH)" ]]; then
@@ -211,7 +213,15 @@ rv() {
   rm -d $dest
 }
 
-# https://pnpm.io/completion
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+if [[ -e "$(which dagger)" ]]; then
+  source <(dagger completion zsh)
+fi
+if [[ -e "$(which pnpm)" ]]; then
+  source <(pnpm completion zsh)
+fi
+if [[ -e "$(which k3d)" ]]; then
+  source <(k3d completion zsh)
+fi
+if [[ -e "$(which moon)" ]]; then
+  source <(moon completions)
+fi

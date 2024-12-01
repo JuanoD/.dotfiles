@@ -9,7 +9,7 @@ format = """
 [](green)\
 [$os$username](bg:green fg:base)\
 [](bg:lavender fg:green)\
-[$directory](bg:lavender fg:base)\
+[$directory($env_var )](bg:lavender fg:base)\
 [](fg:lavender bg:yellow)\
 [( $git_branch$git_status )](fg:crust bg:yellow)\
 [](fg:yellow bg:blue)\
@@ -64,6 +64,10 @@ truncation_symbol = "…/"
 "Imágenes" = ""
 "Pictures" = ""
 
+[env_var.DEVBOX]
+variable = "DEVBOX_SHELL_ENABLED"
+format = "❄️"
+
 [fill]
 symbol = "─"
 style = "bold green"
@@ -89,6 +93,10 @@ deleted = "-$count"
 format = "[($hostname)]($style)"
 disabled = false
 
+[java]
+symbol = "☕"
+format = "$symbol$version"
+
 [jobs]
 format = " $symbol$number"
 
@@ -110,7 +118,7 @@ symbol = ""
 format = "( ($symbol$version))"
 
 [os]
-format="$symbol"
+format = "$symbol"
 disabled = false
 
 [os.symbols]
