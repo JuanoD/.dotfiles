@@ -1,0 +1,11 @@
+[Unit]
+Description = Mount my gdrive sync using rclone
+
+[Service]
+
+StandardOutput = journal
+
+ExecStart = rclone mount db: %h/.syncs/drive -v
+
+[Install]
+WantedBy = default.target

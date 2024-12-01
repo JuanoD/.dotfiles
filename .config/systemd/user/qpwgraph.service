@@ -1,0 +1,12 @@
+[Unit]
+Description = Start and keep qpwgraph running
+
+[Service]
+
+StandardOutput = journal
+
+ExecStart = qpwgraph -m
+Restart=always
+
+[Install]
+WantedBy = default.target
