@@ -13,7 +13,8 @@ format = """
 [](fg:lavender bg:yellow)\
 [( $git_branch$git_status )](fg:crust bg:yellow)\
 [](fg:yellow bg:blue)\
-[($c\
+[($nix_shell\
+$c\
 $elixir\
 $elm\
 $golang\
@@ -65,6 +66,7 @@ truncation_symbol = "…/"
 "Pictures" = ""
 
 [env_var.DEVBOX]
+disabled = true
 variable = "DEVBOX_SHELL_ENABLED"
 format = "❄️"
 
@@ -112,6 +114,12 @@ detect_folders = [".git"]
 
 [line_break]
 disabled = true
+
+[nix_shell]
+format = " $symbol$state"
+symbol = ""
+impure_msg = "❄️"
+pure_msg = "🧊"
 
 [nodejs]
 symbol = ""
