@@ -217,11 +217,14 @@ if [[ -e "$(which dagger)" ]]; then
   source <(dagger completion zsh)
 fi
 if [[ -e "$(which pnpm)" ]]; then
-  source <(pnpm completion zsh)
+  source <(pnpm completion zsh) 2>/dev/null
 fi
 if [[ -e "$(which k3d)" ]]; then
   source <(k3d completion zsh)
 fi
 if [[ -e "$(which moon)" ]]; then
   source <(moon completions)
+fi
+if [[ -e "$(which volta)" ]]; then
+  source <(volta completions zsh)
 fi
