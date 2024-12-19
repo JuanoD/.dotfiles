@@ -13,7 +13,7 @@ format = """
 [](fg:lavender bg:yellow)\
 [( $git_branch$git_status )](fg:crust bg:yellow)\
 [](fg:yellow bg:blue)\
-[($nix_shell\
+[(($nix_shell )\
 $c\
 $elixir\
 $elm\
@@ -23,6 +23,7 @@ $haskell\
 $java\
 $julia\
 $nodejs\
+$deno\
 $python\
 $nim\
 $rust\
@@ -49,6 +50,10 @@ format = "[$symbol($version)]($style)"
 [cmd_duration]
 format = " ೱ$duration"
 disabled = false
+
+[deno]
+format = "( $symbol$version)"
+symbol = "🦕"
 
 [directory]
 format = " $path "
