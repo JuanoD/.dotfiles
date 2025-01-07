@@ -228,3 +228,6 @@ fi
 if [[ -e "$(which volta)" ]]; then
   source <(volta completions zsh)
 fi
+if [[ -e "$(which uv)" ]]; then
+  source <(uv generate-shell-completion zsh)
+fi
