@@ -140,12 +140,15 @@ alias pe="pnpm exec"
 # Functions
 # ==================================
 ssh_tunnel() {
-  if ([[ -z $2 ]]); then
-    PORT=5432
+  HOST=$1
+  shift
+  if ([ -n $1 ] && [ "$1" -eq "$1" ] 2>/dev/null); then
+    PORT=$1
+    shift
   else
-    PORT=$2
+    PORT=5432
   fi
-  ssh -N -L ":${PORT}:localhost:${PORT}" -o ServerAliveInterval=60 $1
+  ssh -N -L ":${PORT}:localhost:${PORT}" -o ServerAliveInterval=60 $HOST $@
 }
 
 ans() {
