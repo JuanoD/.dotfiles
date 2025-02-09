@@ -33,7 +33,7 @@ $scala )](fg:base bg:blue)\
 [](fg:teal bg:red)\
 [($time$status$cmd_duration$jobs )](fg:base bg:red)\
 [ ](fg:red)\
-"""
+[$line_break ]()"""
 # format = '''
 # [$line_break┌(\[[$shell]($style)\])(\[$status\])$fill(\[ $git_branch$git_commit$git_state$git_metrics$git_status \])$fill(\[$jobs\])(\[$cmd_duration\])→](bold green)
 # [│](bold green)($username(@$hostname) )$directory$shlvl$kubernetes$vcsh$docker_context$package$cmake$dart$deno$dotnet$elixir$elm$erlang$golang$helm$java$julia$kotlin$nim$nodejs$ocaml$perl$php$purescript$python$red$ruby$rust$scala$swift$terraform$vlang$vagrant$zig$nix_shell$conda$memory_usage$aws$gcloud$openstack$env_var$crystal$custom$lua$battery$time
@@ -118,7 +118,7 @@ detect_folders = [".git"]
 'k3d' = ""
 
 [line_break]
-disabled = true
+disabled = false
 
 [nix_shell]
 format = " $symbol$state"
@@ -170,7 +170,8 @@ symbol = ""
 disabled = false
 
 [time]
-disabled = true
+disabled = false
+format = " $time"
 
 [username]
 show_always = true
