@@ -234,3 +234,6 @@ fi
 if [[ -e "$(which uv)" ]]; then
   source <(uv generate-shell-completion zsh)
 fi
+if [[ -e "$(which devbox)" ]]; then
+  source <(devbox completion zsh)
+fi
