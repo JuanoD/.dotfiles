@@ -1,26 +1,38 @@
 [user]
-	email = 3674588+JuanoD@users.noreply.github.com
-	name = Juan Díaz
+email = 3674588+JuanoD@users.noreply.github.com
+name = Juan Díaz
+
 [core]
-	autocrlf = input
+autocrlf = input
+
 [diff]
-    tool = default-difftool
+tool = default-difftool
+
 [difftool "default-difftool"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+cmd = code --wait --diff $LOCAL $REMOTE
+
 [merge]
-	tool = default-mergetool
+tool = default-mergetool
+
 [mergetool "default-mergetool"]
-  cmd = code --wait $MERGED
+cmd = code --wait $MERGED
+
 [include]
-  path = ~/.gitconfig-os
-[includeIf "gitdir/i:**/quick/"]
-	path = ~/.gitconfig-quick
+path = ~/.gitconfig-os
+## Use this pattern to include configs depending on folder
+# [includeIf "gitdir/i:**/asdf/"]
+# path = ~/.gitconfig-asdf
+## To use a different key for these
+# [core]
+# sshCommand = ssh -i ~/.ssh/key -F /dev/null
+
 [alias]
-	slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
-	osreset = reset @{u}
-	oreset = !git fetch -p && git reset --hard @{u}
-	orebase = rebase "@{u}"
-	smerge = !git fetch -p && git merge $1 --no-edit && git reset @{u} && :
-	search-log = !~/bin/git-search-log
+slog = !git log --graph --pretty=format:'%C(auto)%h  %s %C(blue)%an, %C(green)(%cs)%Creset%C(auto)%d%Creset' "$@"
+osreset = reset @{u}
+oreset = !git fetch -p && git reset --hard @{u}
+orebase = rebase "@{u}"
+smerge = !git fetch -p && git merge $1 --no-edit && git reset @{u} && :
+search-log = !~/bin/git-search-log
+
 [push]
-	autoSetupRemote = true
+autoSetupRemote = true
