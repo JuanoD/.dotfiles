@@ -1,0 +1,4 @@
+theme = catppuccin-mocha
+font-family = CaskaydiaCove Nerd Font Mono
+
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
