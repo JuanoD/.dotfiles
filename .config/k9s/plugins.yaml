@@ -1,0 +1,25 @@
+plugins:
+  #--- Create debug container for selected pod in current namespace
+  # See https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/#ephemeral-container
+  debug: # https://github.com/derailed/k9s/blob/master/plugins/debug-container.yaml
+    shortCut: Shift-D
+    description: Add debug container
+    dangerous: true
+    scopes:
+      - containers
+    command: bash
+    background: false
+    confirm: true
+    args:
+      - -c
+      - "kubectl --kubeconfig=$KUBECONFIG debug -it --context $CONTEXT -n=$NAMESPACE $POD --target=$NAME --image=nicolaka/netshoot --share-processes -- bash"
+  dive: # https://github.com/derailed/k9s/blob/master/plugins/dive.yaml
+    shortCut: d
+    confirm: true
+    description: "Dive image"
+    scopes:
+      - containers
+    command: dive
+    background: false
+    args:
+      - $COL-IMAGE
