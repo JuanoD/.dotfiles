@@ -29,13 +29,19 @@ fi
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   SPACESHIP_PROMPT_ASYNC=FALSE
 fi
+if [[ $TERM_PROGRAM == "ghostty" ]]; then
+  ZELLIJ_AUTO_ATTACH=true
+  ZELLIJ_AUTO_EXIT=true
+  eval "$(zellij setup --generate-auto-start zsh)"
+fi
+
 ZSH_TMUX_AUTOQUIT=false
 GIT_AUTO_FETCH_INTERVAL=120
 plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   # ssh-agent
-  tmux
+  # tmux
   git-auto-fetch
 )
 # eval `keychain --eval id_rsa quick_rsa`
@@ -96,10 +102,10 @@ if [[ -e $MISE ]]; then
   eval "$($MISE activate -s zsh)"
 fi
 
-if [[ -e "$(which pyenv)" ]]; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-fi
+# if [[ -e "$(which pyenv)" ]]; then
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+# fi
 
 eval "$(starship init zsh)"
 
@@ -107,6 +113,7 @@ eval "$(starship init zsh)"
 # Aliases
 # ==================================
 alias lzd=lazydocker
+alias lzd=lazygit
 alias vim=nvim
 alias explorer=/mnt/c/Windows/explorer.exe
 alias cls=clear
@@ -114,10 +121,10 @@ alias doco="docker compose"
 alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}\""
 alias k=kubectl
 alias f="$(pay-respects zsh)"
-alias qans=/$HOME/Documents/Quick/ansible/dev
+alias sude="sudo --preserve-env=HOME,PATH"
 
-if [[ -e "$(which exa)" ]]; then
-  alias ls="exa --group-directories-first --time-style=long-iso --color=auto --icons"
+if [[ -e "$(which eza)" ]]; then
+  alias ls="eza --group-directories-first --time-style=long-iso --color=auto --icons"
 else
   alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
 fi
@@ -216,6 +223,8 @@ rv() {
   rm -d $dest
 }
 
+fpath+=~/.zsh
+
 if [[ -e "$(which dagger)" ]]; then
   source <(dagger completion zsh)
 fi
@@ -237,3 +246,12 @@ fi
 if [[ -e "$(which devbox)" ]]; then
   source <(devbox completion zsh)
 fi
+
+function make_completions() {
+  compdir=~/.zsh
+  mkdir -p $compdir
+
+  if [[ -e "$(which zellij)" ]]; then
+    zellij setup --generate-completion zsh >$compdir/.zellij.zsh
+  fi
+}

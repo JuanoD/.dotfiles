@@ -30,3 +30,21 @@ j = { k = "normal_mode", j = "normal_mode" }
 [keys.normal]
 esc = ["collapse_selection", "keep_primary_selection"]
 C-r = ":reload-all"
+
+# https://yazi-rs.github.io/docs/tips/#helix-with-zellij
+[keys.normal.C-y]
+# Open the file(s) in the current window
+y = [
+    "normal_mode",
+    ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh open",
+]
+v = [
+    "normal_mode",
+    ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh vsplit",
+]
+# Open the file(s) in a horizontal split
+h = [
+    "normal_mode",
+    ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh hsplit",
+]
+# Open the file(s) in a vertical split
