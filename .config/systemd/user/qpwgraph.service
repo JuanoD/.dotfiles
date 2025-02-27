@@ -5,8 +5,12 @@ Description = Start and keep qpwgraph running
 
 StandardOutput = journal
 
+ExecStartPre=/bin/sleep 5
 ExecStart = qpwgraph -m
 Restart=always
+RestartSec=0.1
+RestartSteps=0.2
+RestartMaxDelaySec=5
 
 [Install]
 WantedBy = default.target

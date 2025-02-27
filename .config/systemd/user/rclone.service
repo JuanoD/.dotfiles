@@ -5,7 +5,7 @@ Description = Mount my gdrive sync using rclone
 
 StandardOutput = journal
 
-ExecStart = rclone mount db: %h/.syncs/drive -v
+ExecStart = rclone mount db: %h/Documents/.syncs/drive -v
 
 [Install]
 WantedBy = default.target
