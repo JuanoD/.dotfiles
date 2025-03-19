@@ -38,13 +38,18 @@ y = [
     "normal_mode",
     ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh open",
 ]
+# Open the file(s) in a vertical split
 v = [
     "normal_mode",
     ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh vsplit",
 ]
-# Open the file(s) in a horizontal split
+# Open the file(s) in an horizontal split
 h = [
     "normal_mode",
     ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/yazi-picker.sh hsplit",
 ]
-# Open the file(s) in a vertical split
+# Lazygit
+g = [
+    "normal_mode",
+    ":sh zellij run -c -f -x 10% -y 10% --width 80% --height 80% -- ~/.config/helix/lzg.sh",
+]
