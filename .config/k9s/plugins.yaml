@@ -23,3 +23,52 @@ plugins:
     background: false
     args:
       - $COL-IMAGE
+  # https://gist.github.com/ammarnajjar/8203e242a5f1d772d1a0beb104225e27
+  jqlogs:
+    shortCut: Ctrl-J
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - pod
+    command: sh
+    background: false
+    args:
+      - -c
+      - |
+        kubectl logs -f $NAME -n $NAMESPACE --context $CONTEXT | jq -SR '. as $line | try (fromjson) catch $line' | less -R
+  jqlogsd:
+    shortCut: Ctrl-J
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - deployment
+    command: sh
+    background: false
+    args:
+      - -c
+      - |
+        kubectl logs -f deployment/$NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line' | less -R
+  jqlogss:
+    shortCut: Ctrl-J
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - service
+    command: sh
+    background: false
+    args:
+      - -c
+      - |
+        kubectl logs -f service/$NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line' | less -R
+  jqlogsc:
+    shortCut: Ctrl-J
+    confirm: false
+    description: "Logs (jq)"
+    scopes:
+      - container
+    command: sh
+    background: false
+    args:
+      - -c
+      - |
+        kubectl logs -f pod/$POD -c $NAME -n $NAMESPACE --context $CONTEXT |jq -SR '. as $line | try (fromjson) catch $line' | less -R
