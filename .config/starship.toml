@@ -96,6 +96,10 @@ staged = '+$count'
 renamed = "»$count"
 deleted = "-$count"
 
+[golang]
+symbol = "🐹"
+format = "$symbol$version"
+
 [hostname]
 format = "[($hostname)]($style)"
 disabled = false
