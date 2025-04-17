@@ -10,7 +10,9 @@ Make sure firefox sync backed up recently.
 
 ## Linux
 
-Before installing the new OS, backup the packages installed with `pacman -Qe > pkgs` or `pacman -Qqe > pkgs` for output without version.
+- **Arch**: Before installing the new OS, backup the packages installed with `pacman -Qe > pkgs` or `pacman -Qqe > pkgs` for output without version.
+- **Fedora**: `dnf list`.
+- **Homebrew**: `brew bundle dump` and `brew bundle install`.
 
 Some non-explicitly installed packages (dependencies maybe?) get on the list, so some manual work for re-installing is required.
 
