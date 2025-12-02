@@ -33,6 +33,9 @@ oreset = !git fetch -p && git reset --hard @{u}
 orebase = rebase "@{u}"
 smerge = !git fetch -p && git merge $1 --no-edit && git reset @{u} && :
 search-log = !~/bin/git-search-log
+rm-merged = !git branch -vv | grep 'gone]' | awk '{print $1}' | xargs git branch -D
 
 [push]
 autoSetupRemote = true
+[init]
+defaultBranch = main
