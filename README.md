@@ -18,7 +18,10 @@ Some non-explicitly installed packages (dependencies maybe?) get on the list, so
 
 ### System config
 
-Check [this](https://www.reddit.com/r/linuxquestions/comments/r9w8yh/comment/hnk0ybc/) on how to make F-keys work as F-keys.
+To make F-keys work as F-keys:
+
+- [Wayland](https://www.reddit.com/r/wayland/comments/x3tff6/comment/kf36xa0/).
+- [X11](https://www.reddit.com/r/linuxquestions/comments/r9w8yh/comment/hnk0ybc/).
 
 Don't forget to `ssh-add` all required keys and check they work correctly with `seahorse`.
 
@@ -34,7 +37,7 @@ Open `gnome-tweaks`:
 - Disable mouse middle click paste
 - Startup applications: `thunderbird`, `discord`, `qpwgraph`
 
-Check this [wiki entry](https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup) if there is any issue with graphics.
+Check this [wiki entry](<https://wiki.manjaro.org/index.php/Configure_NVIDIA_(non-free)_settings_and_load_them_on_Startup>) if there is any issue with graphics.
 
 ### Terminal
 
@@ -117,12 +120,14 @@ Check [catpuccin theme for gnome terminal](https://github.com/catppuccin/gnome-t
 - [Fullscreen Avoider](https://extensions.gnome.org/extension/4362/fullscreen-avoider/).
 - Custom Accent Colors
 - [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/).
+- [Fuzzy Application Search](https://extensions.gnome.org/extension/8544/fuzzy-application-search/).
+- [Custom Command Toggle](https://extensions.gnome.org/extension/7012/custom-command-toggle/).
 
 ### Others
 
 - Thunderbird
 
-  Install `EDS Calendar Integration` and `KeepRunning` addons.
+  Install `EDS Calendar Integration`, `KeepRunning`, `TbSync`, and `Provider for Exchange ActiveSync` addons.
 
 - Themes:
   - [catppuccin/gtk](https://github.com/catppuccin/gtk).
