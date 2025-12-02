@@ -29,7 +29,7 @@ $nim\
 $rust\
 $scala )](fg:base bg:blue)\
 [](fg:blue bg:teal)\
-[($docker_context$kubernetes )](fg:base bg:teal)\
+[($docker_context $kubernetes )](fg:base bg:teal)\
 [](fg:teal bg:red)\
 [($time$status$cmd_duration$jobs )](fg:base bg:red)\
 [ ](fg:red)\
@@ -114,9 +114,10 @@ format = " $symbol$number"
 [kubernetes]
 disabled = false
 symbol = "☸"
-format = " ($symbol ($context)(.$namespace))"
-detect_files = [".git"]
-detect_folders = [".git"]
+format = "$symbol ($context)(.$namespace)"
+# detect_files = [".git"]
+# detect_folders = [".git"]
+detect_env_vars = ["KUBIE_KUBECONFIG"]
 
 [kubernetes.context_aliases]
 'k3d' = ""
