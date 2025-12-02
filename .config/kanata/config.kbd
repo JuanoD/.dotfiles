@@ -1,11 +1,50 @@
+(deflocalkeys-linux
+  |    41
+  '    12
+  ¿    13
+  ´    26
+  +    27
+  ñ    39
+  {    40
+  }    43
+  <    86
+  ,    51
+  .    52
+  -    53
+)
+
 (defsrc
-  caps
+  |    1    2    3    4    5    6    7    8    9    0    '    ¿    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    ´    +
+  caps a    s    d    f    g    h    j    k    l    ñ    {    }    ret
+  lsft <    z    x    c    v    b    n    m    ,    .    -    rsft
+       lmet lalt           spc                 ralt menu rctl
+)
+
+(defvar
+  tap-repress-timeout   100
+  hold-timeout          100
+  tt $tap-repress-timeout
+  ht $hold-timeout
 )
 
 (defalias
-  cap (tap-hold 100 100 caps lsft)
+  cap (tap-hold $tt $ht caps lsft)
+  mo1 (layer-toggle layer1)
 )
 
 (deflayer base
-  @cap
+  |    1    2    3    4    5    6    7    8    9    0    '    ¿    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    ´    +
+  @cap a    s    d    f    g    h    j    k    l    ñ    {    }    ret
+  lsft <    z    x    c    v    b    n    m    ,    .    -    rsft
+       lmet lalt           spc                 @mo1 rmet rctl
+)
+
+(deflayer layer1
+  AG-| f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  AG-'  f12   AG-}
+  tab  AG-q 2    3    4    5    6    7    8    9    0    AG-´ AG-+
+  @cap S-1  S-2  S-3  S-4  S-5  S-6  S-7  S-8  S-9  S-0  AG-{ AG-}  ret
+  lsft <    AG-q AG-{ S-´  S-+  b    {    }    '    ¿    AG-' AG-+
+       lmet lalt           spc                 XX   ralt rctl
 )
