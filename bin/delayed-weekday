@@ -1,0 +1,12 @@
+#!/bin/bash
+day=$(date '+%u')
+if [[ "$day" -gt 5 ]]; then
+        exit 0
+fi
+dtime=$(date '+%H')
+if [[ "$dtime" -gt 17 ]]; then
+        exit 0
+fi
+
+sleep 5
+($@) &
