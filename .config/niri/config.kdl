@@ -83,6 +83,7 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
+        proportion 0.8
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
     }
@@ -127,6 +128,12 @@ layer-rule {
     match namespace="^quickshell$"
     place-within-backdrop true
 }
+layer-rule {
+    match namespace="^notifications$"
+    match namespace="^dms:notification-popup$"
+    match namespace="^dms:notification-center-popout$"
+    block-out-from "screencast"
+}
 overview {
     workspace-shadow {
         off
@@ -139,14 +146,16 @@ overview {
 spawn-at-startup "niri" "msg" "action" "focus-workspace" "2"
 spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
 spawn-at-startup "bash" "-c" "/home/juanod/.local/share/firefox/firefox &"
-spawn-at-startup "bash" "-c" "sleep 5 && /usr/bin/keepassxc --minimized &"
+spawn-at-startup "bash" "-c" "sleep 10 && /usr/bin/keepassxc --minimized &"
 spawn-at-startup "bash" "-c" "sleep 5 && /usr/bin/kdeconnect-indicator &"
 spawn-at-startup "bash" "-c" "sleep 5 && /home/juanod/.local/bin/discord_launcher.sh --start-minimized &"
 spawn-at-startup "bash" "-c" "/home/juanod/.local/bin/delayed-weekday /usr/bin/flatpak run --branch=stable --arch=x86_64 --command=com.slack.Slack --file-forwarding com.slack.Slack -u @@u %U @@"
 // spawn-at-startup "env" "XDG_MENU_PREFIX=plasma-" "kbuildsycoca6"
 // spawn-at-startup "dms" "run"
-
 // spawn-at-startup "/usr/libexec/polkit-mate-authentication-agent-1"
+
+// ============================================================================
+
 environment {
     XDG_CURRENT_DESKTOP "niri"
     QT_QPA_PLATFORM "wayland"
@@ -155,7 +164,7 @@ environment {
     // QT_QPA_PLATFORMTHEME_QT6 "gtk3"
     QT_QPA_PLATFORMTHEME "qt6ct"
     QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
-    TERMINAL "ghostty"
+    TERMINAL "kitty"
     SSH_AUTH_SOCK "/run/user/1000/keyring/ssh"
 }
 hotkey-overlay {
@@ -163,43 +172,21 @@ hotkey-overlay {
 }
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-// animations {
-//     workspace-switch {
-//         spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
-//     }
-//     window-open {
-//         duration-ms 150
-//         curve "ease-out-expo"
-//     }
-//     window-close {
-//         duration-ms 150
-//         curve "ease-out-quad"
-//     }
-//     horizontal-view-movement {
-//         spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-//     }
-//     window-movement {
-//         spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
-//     }
-//     window-resize {
-//         spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
-//     }
-//     config-notification-open-close {
-//         spring damping-ratio=0.65 stiffness=923 epsilon=0.001
-//     }
-//     screenshot-ui-open {
-//         duration-ms 200
-//         curve "ease-out-quad"
-//     }
-//     overview-open-close {
-//         spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
-//     }
-// }
+
+// ============================================================================
+
 animations {
     // Uncomment to turn off all animations.
     // off
 
     slowdown 2.0
+    workspace-switch {
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
+    }
+    // window-open {
+    //     duration-ms 150
+    //     curve "ease-out-expo"
+    // }
     window-open {
         duration-ms 200
         curve "linear"
@@ -221,44 +208,16 @@ animations {
             }
         "
     }
+    // window-close {
+    //     duration-ms 150
+    //     curve "ease-out-quad"
+    // }
 
-        //window closing shrinking circle
-   // window-close {
-   //     duration-ms 175
-   //     curve "linear"
-   //     custom-shader r"
-   //     vec4 shrinking_circle(vec3 coords_geo, vec3 size_geo) {
-   //         vec3 coords_tex = niri_geo_to_tex * coords_geo;
-   //         vec4 color = texture2D(niri_tex, coords_tex.st);
-   //         // Calculate coordinates relative to center, scaled appropriately
-   //         vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-   //         // Normalize coordinates based on diagonal length for a circular shape
-   //         coords = coords / length(size_geo.xy);
-
-            // Invert the progress for closing effect: 1 -> 0
-   //         float p_close = 1.0 - niri_clamped_progress;
-
-            // If pixel's squared distance from center is >= shrinking radius squared, make transparent
-            // (Keeps pixels *inside* the shrinking radius p_close)
-   //         if (p_close * p_close <= dot(coords, coords))
-   //             color = vec4(0.0);
-
-            // Optional: You could also fade the alpha slightly faster at the end if desired
-            // color.a *= p_close; // Fades out completely as radius reaches 0
-
-   //         return color;
-   //     }
-
-   //     vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-   //         return shrinking_circle(coords_geo, size_geo);
-   //     }"
-   // }
-
-  // window falling animation
+    // window falling animation
     window-close {
         duration-ms 250
         curve "linear"
-       custom-shader r"
+        custom-shader r"
             vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
                 float progress = niri_clamped_progress * niri_clamped_progress;
                 vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
@@ -281,7 +240,62 @@ animations {
             }
         "
     }
+
+    // // window closing shrinking circle
+    // window-close {
+    //     duration-ms 175
+    //     curve "linear"
+    //     custom-shader r"
+    //         vec4 shrinking_circle(vec3 coords_geo, vec3 size_geo) {
+    //             vec3 coords_tex = niri_geo_to_tex * coords_geo;
+    //             vec4 color = texture2D(niri_tex, coords_tex.st);
+    //             // Calculate coordinates relative to center, scaled appropriately
+    //             vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
+    //             // Normalize coordinates based on diagonal length for a circular shape
+    //             coords = coords / length(size_geo.xy);
+
+    //             // Invert the progress for closing effect: 1 -> 0
+    //             float p_close = 1.0 - niri_clamped_progress;
+
+    //             // If pixel's squared distance from center is >= shrinking radius squared, make transparent
+    //             // (Keeps pixels *inside* the shrinking radius p_close)
+    //             if (p_close * p_close <= dot(coords, coords))
+    //                 color = vec4(0.0);
+
+    //             // Optional: You could also fade the alpha slightly faster at the end if desired
+    //             color.a *= p_close; // Fades out completely as radius reaches 0
+
+    //             return color;
+    //         }
+
+    //         vec4 close_color(vec3 coords_geo, vec3 size_geo) {
+    //             return shrinking_circle(coords_geo, size_geo);
+    //         }
+    //     "
+    // }
+    horizontal-view-movement {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    window-movement {
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
+    }
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
+    config-notification-open-close {
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
+    }
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
+    }
 }
+
+// ============================================================================
+
 // Window rules let you adjust behavior for individual windows.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
@@ -311,7 +325,7 @@ window-rule {
     match app-id=r#"^gnome-calculator$"#
     match app-id=r#"^galculator$"#
     match app-id=r#"^blueman-manager$"#
-    match app-id=r#"^org\.gnome\.Nautilus$"#
+    // match app-id=r#"^org\.gnome\.Nautilus$"#
     // match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
     open-floating true
@@ -326,19 +340,24 @@ window-rule {
 }
 window-rule {
     match is-active=false
-    opacity 0.9
+    opacity 0.95
 }
 window-rule {
-    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    match app-id=r#"firefox-dev$"# title="^Picture-in-Picture$"
+    match app-id="firefox" title="^Picture-in-Picture$"
+    match app-id=r#"org.keepassxc.KeePassXC$"# title="^KeePassXC - Passkey credentials$"
+    match app-id=r#"org.keepassxc.KeePassXC$"# title="^KeePassXC - Browser Access Request$"
     match app-id="zoom"
+    match app-id="java" title="^Dbeaver"
     open-floating true
 }
+window-rule {    
+    match app-id="firefox" title="^Picture-in-Picture$"
+    opacity 1.0
+}
 window-rule {
-    match app-id=r#"firefox$"#
-    match app-id=r#"firefox-dev$"#
+    match app-id="firefox"
     open-on-output "DP-2"
-    default-column-width { proportion 0.75; }
+    default-column-width { proportion 0.8; }
 }
 window-rule {
     geometry-corner-radius 12
@@ -346,6 +365,7 @@ window-rule {
 }
 window-rule {
     match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    open-floating true
     default-floating-position x=10 y=10 relative-to="bottom-right"
     open-focused false
 }
@@ -353,8 +373,20 @@ window-rule {
     match app-id="xwaylandvideobridge"
     match app-id="carla"
     match app-id="com.obsproject.Studio"
-    match app-id="thunderbird-esr"
     open-on-workspace "above"
+}
+window-rule {
+    match app-id="thunderbird" title="Mozilla Thunderbird$"
+    open-on-workspace "below"
+}
+window-rule {
+    match app-id="thunderbird" title=r#"Reminders?"#
+    open-floating true
+    // open-focused false // doesn't show up immediately. Needs more tuning
+}
+window-rule {    
+    match app-id="firefox" title="WhatsApp|Telegram"
+    block-out-from "screencast"
 }
 
 binds {
@@ -364,7 +396,7 @@ binds {
     Mod+Shift+apostrophe { show-hotkey-overlay; }
 
     // === Application Launchers ===
-    Mod+T hotkey-overlay-title="Open Terminal" { spawn "ghostty"; }
+    Mod+T hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Application Launcher" {
         spawn "dms" "ipc" "call" "spotlight" "toggle";
     }
@@ -537,9 +569,9 @@ binds {
 
     // === Manual Sizing ===
     Mod+Minus { set-column-width "-10%"; }
-    Mod+Equal { set-column-width "+10%"; }
+    Mod+Plus { set-column-width "+10%"; }
     Mod+Shift+Minus { set-window-height "-10%"; }
-    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+Shift+Plus { set-window-height "+10%"; }
 
     // === Screenshots ===
     XF86Launch1 { screenshot; }
