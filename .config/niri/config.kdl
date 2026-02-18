@@ -38,7 +38,7 @@ input {
         }
         numlock
     }
-    // focus-follows-mouse
+    focus-follows-mouse max-scroll-amount="10%"
     touchpad {
         tap
         natural-scroll
@@ -350,6 +350,10 @@ window-rule {
     match app-id="java" title="^Dbeaver"
     open-floating true
 }
+window-rule {
+    match app-id=r#"org.keepassxc.KeePassXC$"# title="^Unlock Database - KeePassXC$"
+    open-focused true
+}
 window-rule {    
     match app-id="firefox" title="^Picture-in-Picture$"
     opacity 1.0
@@ -370,10 +374,10 @@ window-rule {
     open-focused false
 }
 window-rule {
-    match app-id="xwaylandvideobridge"
     match app-id="carla"
     match app-id="com.obsproject.Studio"
     open-on-workspace "above"
+    default-column-width { proportion 0.8; }
 }
 window-rule {
     match app-id="thunderbird" title="Mozilla Thunderbird$"
@@ -383,6 +387,12 @@ window-rule {
     match app-id="thunderbird" title=r#"Reminders?"#
     open-floating true
     // open-focused false // doesn't show up immediately. Needs more tuning
+    default-column-width { proportion 0.3; }
+    default-window-height { proportion 0.3; }
+}
+window-rule {
+    match app-id="firefox" title="^About"
+    open-floating true
 }
 window-rule {    
     match app-id="firefox" title="WhatsApp|Telegram"
