@@ -1,3 +1,9 @@
+(defcfg
+  linux-dev-names-exclude (
+    "splitkb.com Aurora Sofle v2 rev1"
+  )
+)
+
 (deflocalkeys-linux
   |    41
   '    12
