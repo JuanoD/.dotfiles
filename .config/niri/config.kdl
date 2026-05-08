@@ -38,7 +38,7 @@ input {
         }
         numlock
     }
-    focus-follows-mouse max-scroll-amount="10%"
+    // focus-follows-mouse max-scroll-amount="10%"
     touchpad {
         tap
         natural-scroll
@@ -66,7 +66,7 @@ workspace "below"
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 5
+    // gaps 5
     background-color "transparent"
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -126,6 +126,7 @@ layout {
 }
 layer-rule {
     match namespace="^quickshell$"
+    match namespace="^wayvid$"
     place-within-backdrop true
 }
 layer-rule {
@@ -187,92 +188,12 @@ animations {
     //     duration-ms 150
     //     curve "ease-out-expo"
     // }
-    window-open {
-        duration-ms 200
-        curve "linear"
-        custom-shader r"
-            vec4 expanding_circle(vec3 coords_geo, vec3 size_geo) {
-                vec3 coords_tex = niri_geo_to_tex * coords_geo;
-                vec4 color = texture2D(niri_tex, coords_tex.st);
-                vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-                coords = coords / length(size_geo.xy);
-                float p = niri_clamped_progress;
-                if (p * p <= dot(coords, coords))
-                    color = vec4(0.0);
 
-                return color;
-            }
-
-            vec4 open_color(vec3 coords_geo, vec3 size_geo) {
-                return expanding_circle(coords_geo, size_geo);
-            }
-        "
-    }
     // window-close {
     //     duration-ms 150
     //     curve "ease-out-quad"
     // }
 
-    // window falling animation
-    window-close {
-        duration-ms 250
-        curve "linear"
-        custom-shader r"
-            vec4 fall_and_rotate(vec3 coords_geo, vec3 size_geo) {
-                float progress = niri_clamped_progress * niri_clamped_progress;
-                vec2 coords = (coords_geo.xy - vec2(0.5, 1.0)) * size_geo.xy;
-                coords.y -= progress * 1440.0;
-                float random = (niri_random_seed - 0.5) / 2.0;
-                random = sign(random) - random;
-                float max_angle = 0.5 * random;
-                float angle = progress * max_angle;
-                mat2 rotate = mat2(cos(angle), -sin(angle), sin(angle), cos(angle));
-                coords = rotate * coords;
-                coords_geo = vec3(coords / size_geo.xy + vec2(0.5, 1.0), 1.0);
-                vec3 coords_tex = niri_geo_to_tex * coords_geo;
-                vec4 color = texture2D(niri_tex, coords_tex.st);
-
-                return color;
-            }
-
-            vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-                return fall_and_rotate(coords_geo, size_geo);
-            }
-        "
-    }
-
-    // // window closing shrinking circle
-    // window-close {
-    //     duration-ms 175
-    //     curve "linear"
-    //     custom-shader r"
-    //         vec4 shrinking_circle(vec3 coords_geo, vec3 size_geo) {
-    //             vec3 coords_tex = niri_geo_to_tex * coords_geo;
-    //             vec4 color = texture2D(niri_tex, coords_tex.st);
-    //             // Calculate coordinates relative to center, scaled appropriately
-    //             vec2 coords = (coords_geo.xy - vec2(0.5, 0.5)) * size_geo.xy * 2.0;
-    //             // Normalize coordinates based on diagonal length for a circular shape
-    //             coords = coords / length(size_geo.xy);
-
-    //             // Invert the progress for closing effect: 1 -> 0
-    //             float p_close = 1.0 - niri_clamped_progress;
-
-    //             // If pixel's squared distance from center is >= shrinking radius squared, make transparent
-    //             // (Keeps pixels *inside* the shrinking radius p_close)
-    //             if (p_close * p_close <= dot(coords, coords))
-    //                 color = vec4(0.0);
-
-    //             // Optional: You could also fade the alpha slightly faster at the end if desired
-    //             color.a *= p_close; // Fades out completely as radius reaches 0
-
-    //             return color;
-    //         }
-
-    //         vec4 close_color(vec3 coords_geo, vec3 size_geo) {
-    //             return shrinking_circle(coords_geo, size_geo);
-    //         }
-    //     "
-    // }
     horizontal-view-movement {
         spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
     }
@@ -280,7 +201,8 @@ animations {
         spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
     }
     window-resize {
-        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+        // spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+        spring damping-ratio=0.45 stiffness=750 epsilon=0.0003
     }
     config-notification-open-close {
         spring damping-ratio=0.65 stiffness=923 epsilon=0.001
@@ -293,6 +215,11 @@ animations {
         spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
     }
 }
+
+include "animations/open-glitch.kdl"
+include "animations/close-smoke.kdl"
+
+
 
 // ============================================================================
 
@@ -328,7 +255,12 @@ window-rule {
     // match app-id=r#"^org\.gnome\.Nautilus$"#
     // match app-id=r#"^steam$"#
     match app-id=r#"^xdg-desktop-portal$"#
+    match app-id="naps2" // naps progress
     open-floating true
+}
+window-rule {    
+    match app-id="naps2" title=r#"^NAPS2 -"# // Main window
+    open-floating false
 }
 window-rule {
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
@@ -348,6 +280,17 @@ window-rule {
     match app-id=r#"org.keepassxc.KeePassXC$"# title="^KeePassXC - Browser Access Request$"
     match app-id="zoom"
     match app-id="java" title="^Dbeaver"
+    match app-id="org.kde.kdenlive" title="^Kdenlive$"
+    match app-id="org.kde.filelight" title="^Deleting — Filelight$"
+    open-floating true
+}
+window-rule {
+    match app-id=r#"org.keepassxc.KeePassXC$"#
+    block-out-from "screencast"
+}
+window-rule {
+    match app-id="DBeaver" title=r#"^PostgreSQL dump"#
+    default-window-height { proportion 0.7; }
     open-floating true
 }
 window-rule {
@@ -362,6 +305,10 @@ window-rule {
     match app-id="firefox"
     open-on-output "DP-2"
     default-column-width { proportion 0.8; }
+}
+window-rule {
+    match app-id="DBeaver" title=r#"^DBeaver \d+.\d+.\d+ - "#
+    default-column-width { proportion 0.95; }
 }
 window-rule {
     geometry-corner-radius 12
@@ -381,7 +328,9 @@ window-rule {
 }
 window-rule {
     match app-id="thunderbird" title="Mozilla Thunderbird$"
+    match app-id="Slack"
     open-on-workspace "below"
+    default-column-width { proportion 0.8; }
 }
 window-rule {
     match app-id="thunderbird" title=r#"Reminders?"#
@@ -391,12 +340,23 @@ window-rule {
     default-window-height { proportion 0.3; }
 }
 window-rule {
+    match app-id="FreeCAD" title="^FreeCAD$"
+    open-floating true
+    focus-ring {
+        off
+    }
+}
+window-rule {
     match app-id="firefox" title="^About"
     open-floating true
 }
 window-rule {    
     match app-id="firefox" title="WhatsApp|Telegram"
     block-out-from "screencast"
+}
+window-rule {
+    match app-id="code"    
+    default-column-width { proportion 0.95; }
 }
 
 binds {
