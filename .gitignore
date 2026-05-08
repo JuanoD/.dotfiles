@@ -1,2 +1,4 @@
+.config/ghostty/themes
+.config/k9s/skins
 .config/zellij/plugins
-.config/niri/config.kdl.backup*
+config/niri/config.kdl.backup*

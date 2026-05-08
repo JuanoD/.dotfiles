@@ -190,6 +190,7 @@ vscode "zeshuaro.vscode-python-poetry"
 go "golang.org/x/tools/gopls"
 go "github.com/rahji/helix-ghost"
 go "honnef.co/go/tools/cmd/staticcheck"
+go "github.com/cushycush/store/v2/cmd/store"
 uv "beets[chroma,discogs,lyrics,web]"
 uv "posting"
 uv "qmk", with: ["appdirs"]
