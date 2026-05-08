@@ -7,7 +7,7 @@ palette = "catppuccin_mocha"
 add_newline = false
 format = """
 [](green)\
-[$os$username](bg:green fg:base)\
+[$os($shell )$username](bg:green fg:base)\
 [](bg:lavender fg:green)\
 [$directory($env_var )](bg:lavender fg:base)\
 [](fg:lavender bg:yellow)\
@@ -161,12 +161,14 @@ symbol = ""
 format = "( $symbol($version))"
 
 [shell]
-format = "[$indicator]($style)"
+format = "$indicator"
 fish_indicator = ""
-bash_indicator = ""
+# bash_indicator = ""
+bash_indicator = ""
 powershell_indicator = "[](green)"
-nu_indicator = "Nu"
-zsh_indicator = ""
+nu_indicator = "🐘"
+# zsh_indicator = ""
+zsh_indicator = ""
 disabled = false
 
 [status]
