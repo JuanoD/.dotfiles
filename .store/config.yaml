@@ -1,35 +1,23 @@
 stores:
-    .config:
+    bin:
+        target: ~/.local/bin
+        patterns:
+            - '*'
+    config:
+        MangoHud:
+            target: ~/.config/MangoHud
         ghostty:
             target: ~/.config/ghostty
         helix:
             target: ~/.config/helix
         k9s:
             target: ~/.config/k9s
+        kanata:
+            target: ~/.config/kanata
         kitty:
             target: ~/.config/kitty
             files:
                 - kitty.conf
-        pipewire/pipewire.conf.d:
-            target: ~/.config/pipewire/pipewire.conf.d
-            patterns:
-                - "*"
-        systemd:
-            user:
-                target: ~/.config/systemd/user
-                patterns:
-                    - "*"
-        zellij:
-            target: ~/.config/zellij
-    bin:
-        target: ~/.local/bin
-        patterns:
-            - "*"
-    config:
-        MangoHud:
-            target: ~/.config/MangoHud
-        kanata:
-            target: ~/.config/kanata
         kube:
             target: ~/.kube
             files:
@@ -40,9 +28,21 @@ stores:
             target: ~/.config/niri
         nvim:
             target: ~/.config/nvim
+        pipewire:
+            pipewire.conf.d:
+                target: ~/.config/pipewire/pipewire.conf.d
+                patterns:
+                    - '*'
         starship:
             target: ~/.config
             files:
                 - starship.toml
+        systemd:
+            user:
+                target: ~/.config/systemd/user
+                patterns:
+                    - '*'
         yazi:
             target: ~/.config/yazi
+        zellij:
+            target: ~/.config/zellij
