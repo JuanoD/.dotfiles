@@ -8,7 +8,7 @@ After=modprobe@uinput.service
 Type=simple
 # User=kanata
 ExecPreStart=/bin/sleep 30
-ExecStart=/home/linuxbrew/.linuxbrew/bin/kanata --cfg /home/juanod/.dotfiles/.config/kanata/config.kbd
+ExecStart=/home/linuxbrew/.linuxbrew/bin/kanata --cfg %h/.dotfiles/config/kanata/config.kbd
 Restart=always
 
 [Install]

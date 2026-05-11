@@ -10,12 +10,21 @@ stores:
             target: ~/.config/kitty
             files:
                 - kitty.conf
+        pipewire/pipewire.conf.d:
+            target: ~/.config/pipewire/pipewire.conf.d
+            patterns:
+                - "*"
+        systemd:
+            user:
+                target: ~/.config/systemd/user
+                patterns:
+                    - "*"
         zellij:
             target: ~/.config/zellij
     bin:
         target: ~/.local/bin
         patterns:
-            - '*'
+            - "*"
     config:
         MangoHud:
             target: ~/.config/MangoHud

@@ -1,0 +1,17 @@
+[Unit]
+Description = Start and keep carla running
+ConditionPathExists=/usr/bin/carla
+
+[Service]
+
+StandardOutput = journal
+
+ExecStartPre=/bin/sleep 5
+ExecStart = carla %h/Documents/patchbay.carxp
+Restart=always
+RestartSec=0.1
+RestartSteps=0.2
+RestartMaxDelaySec=5
+
+[Install]
+WantedBy = default.target
