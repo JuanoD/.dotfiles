@@ -69,6 +69,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.moon/bin:$PATH"
 # proto
 export PROTO_HOME="$HOME/.proto"
+
+export SDKMAN_DIR=$(brew --prefix sdkman-cli)/libexec
+[[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ]] && source "${SDKMAN_DIR}/bin/sdkman-init.sh"
 # export PATH="$PROTO_HOME/bin:$PATH"
 # export PATH="$PROTO_HOME/shims:$PATH"
 
@@ -84,15 +87,17 @@ proto_shims() {
   fi
 }
 
-if [[ -z "$(echo $XDG_SESSION_TYPE | grep tty)" ]]; then
+if [[ $TERM_PROGRAM -eq "vscode" ]]; then
   export EDITOR="code --wait"
   export VISUAL="code --wait"
 else
-  export EDITOR=nvim
-  export VISUAL=nvim
+  export EDITOR=$(which hx)
+  export VISUAL=$(which hx)
 fi
 
-export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
+if [[ $(grep -i Microsoft /proc/version) ]]; then
+  export PATH="$PATH:/mnt/c/Program\ Files/Microsoft\ VS\ Code/bin"
+fi
 
 # ==================================
 # Evals
@@ -122,6 +127,7 @@ alias dockerps="docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\t{{.
 alias k=kubectl
 alias f="$(pay-respects zsh)"
 alias sude="sudo --preserve-env=HOME,PATH"
+alias dsh="devbox shell"
 
 if [[ -e "$(which eza)" ]]; then
   alias ls="eza --group-directories-first --time-style=long-iso --color=auto --icons"
@@ -225,9 +231,6 @@ rv() {
 
 fpath+=~/.zsh
 
-if [[ -e "$(which dagger)" ]]; then
-  source <(dagger completion zsh)
-fi
 if [[ -e "$(which pnpm)" ]]; then
   source <(pnpm completion zsh) 2>/dev/null
 fi
@@ -253,5 +256,8 @@ function make_completions() {
 
   if [[ -e "$(which zellij)" ]]; then
     zellij setup --generate-completion zsh >$compdir/.zellij.zsh
+  fi
+  if [[ -e "$(which dagger)" ]]; then
+    dagger completion zsh >$compdir/.dagger.zsh
   fi
 }
