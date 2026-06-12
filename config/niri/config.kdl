@@ -276,6 +276,7 @@ window-rule {
 }
 window-rule {
     match app-id="darktable"
+    match app-id="firefox" title="YouTube"
     opacity 1.0
 }
 window-rule {
@@ -308,6 +309,10 @@ window-rule {
 window-rule {
     match app-id="firefox"
     open-on-output "DP-2"
+    default-column-width { proportion 0.8; }
+}
+window-rule {
+    match app-id="obsidian"
     default-column-width { proportion 0.8; }
 }
 window-rule {
