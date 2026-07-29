@@ -5,7 +5,7 @@ Description = Mount my gdrive sync using rclone
 
 StandardOutput = journal
 
-ExecStart = rclone mount db: %h/Documents/.syncs/drive -v
+ExecStart = rclone mount db: %h/Documents/.syncs/drive -v --vfs-cache-mode full --vfs-cache-max-age=9999h --vfs-refresh --vfs-fast-fingerprint --dir-cache-time 9999h --vfs-cache-max-size 10M
 
 [Install]
 WantedBy = default.target
