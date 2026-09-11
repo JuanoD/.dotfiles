@@ -5,6 +5,9 @@ Description = Start and keep qpwgraph running
 
 StandardOutput = journal
 
+Environment=QT_QPA_PLATFORMTHEME=qt6ct
+Environment=QT_QPA_PLATFORM=wayland
+
 ExecStartPre=/bin/sleep 5
 ExecStart = qpwgraph -m
 Restart=always

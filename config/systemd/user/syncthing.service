@@ -1,0 +1,11 @@
+[Unit]
+Description = File syncs
+
+[Service]
+
+StandardOutput = journal
+
+ExecStart = syncthing serve --no-browser
+
+[Install]
+WantedBy = default.target
