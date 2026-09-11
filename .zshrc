@@ -130,7 +130,7 @@ alias sude="sudo --preserve-env=HOME,PATH"
 alias dsh="devbox shell"
 
 if [[ -e "$(which eza)" ]]; then
-  alias ls="eza --group-directories-first --time-style=long-iso --color=auto --icons"
+  alias ls="eza --group-directories-first --time-style=long-iso --color=auto --icons=always"
 else
   alias ls="ls -FXAvhc --group-directories-first --time-style=+'%y/%m/%d %H:%M' --color=auto"
 fi
@@ -228,6 +228,19 @@ rv() {
   done
   rm -d $dest
 }
+
+free-space() {
+  uv cache prune
+  docker system prune
+  brew cleanup
+  pnpm store prune --force
+  sudo dnf clean all
+  dnf clean all
+}
+
+# ==================================
+# Completions
+# ==================================
 
 fpath+=~/.zsh
 
