@@ -10,6 +10,11 @@ stores:
             target: ~/.config/ghostty
         helix:
             target: ~/.config/helix
+        herdr:
+            target: ~/.config/herdr
+            files:
+                - config.toml
+                - plugins.json
         k9s:
             target: ~/.config/k9s
         kanata:
