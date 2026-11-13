@@ -311,6 +311,7 @@ window-rule {
     open-floating true
     default-floating-position x=10 y=10 relative-to="bottom-right"
     open-focused false
+    block-out-from "screencast"
 }
 window-rule {
     match app-id="carla"
