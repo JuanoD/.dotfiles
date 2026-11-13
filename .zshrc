@@ -53,12 +53,13 @@ source $ZSH/oh-my-zsh.sh
 # ==================================
 PATH="$HOME/.local/bin:$PATH"
 
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
-remove_volta() {
-  export PATH="$(echo $PATH | sed "s#$VOLTA_HOME/bin##g")"
-}
-export VOLTA_FEATURE_PNPM=1
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+# remove_volta() {
+#   export PATH="$(echo $PATH | sed "s#$VOLTA_HOME/bin##g")"
+# }
+# export VOLTA_FEATURE_PNPM=1
+source <(mise activate zsh)
 
 export PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -253,9 +254,9 @@ fi
 if [[ -e "$(which moon)" ]]; then
   source <(moon completions)
 fi
-if [[ -e "$(which volta)" ]]; then
-  source <(volta completions zsh)
-fi
+# if [[ -e "$(which volta)" ]]; then
+#   source <(volta completions zsh)
+# fi
 if [[ -e "$(which uv)" ]]; then
   source <(uv generate-shell-completion zsh)
 fi
