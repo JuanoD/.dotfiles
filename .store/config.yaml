@@ -14,7 +14,6 @@ stores:
             target: ~/.config/herdr
             files:
                 - config.toml
-                - plugins.json
         herdr-app:
             target: ~/.config/herdr-app
             files:
@@ -39,6 +38,8 @@ stores:
             target: ~/.kube
             files:
                 - kubie.yaml
+        mise:
+            target: ~/.config/mise
         mprocs:
             target: ~/.config/mprocs
         niri:
