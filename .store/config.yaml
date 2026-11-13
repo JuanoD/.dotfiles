@@ -15,6 +15,18 @@ stores:
             files:
                 - config.toml
                 - plugins.json
+        herdr-app:
+            target: ~/.config/herdr-app
+            files:
+                - mods/my-pane/main.js
+                - mods/my-pane/vscode.svg
+                - mods/my-pane/mod.json
+                - mods/my-pane/close.svg
+                - mods/my-pane/split-down.svg
+                - mods/my-pane/split-right.svg
+                - mods/my-pane/unzoom.svg
+                - mods/my-pane/zoom.svg
+                - layouts/my-main.json
         k9s:
             target: ~/.config/k9s
         kanata:

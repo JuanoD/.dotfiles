@@ -29,7 +29,7 @@ fi
 if [[ $TERM_PROGRAM == "WarpTerminal" ]]; then
   SPACESHIP_PROMPT_ASYNC=FALSE
 fi
-if [[ $TERM_PROGRAM == "ghostty" ]]; then
+if [[ $TERM_PROGRAM == "ghostty" && -z $HC_TERMINAL_ID ]]; then
   ZELLIJ_AUTO_ATTACH=true
   ZELLIJ_AUTO_EXIT=true
   eval "$(zellij setup --generate-auto-start zsh)"
